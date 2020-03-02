@@ -95,12 +95,9 @@
       <!-- Begin page content -->
       <!-- TODO: Center align content -->
       <div class="content">
-        <h1 class="title">
-           Prototype
-        </h1>
-        <p class="subtitle">
-          Purpose
-        </p>
+        <h1 class="title"> Time to scene </h1>
+
+        <h3> Goal </h3>
 
         <p>
           The visualizations on this page have an emphasis the amount of time it
@@ -113,26 +110,64 @@
 
         <h3 id="wrangling">Wrangling</h3>
 
-        <!-- <p>TODO:Wrangling</p> -->
+        <p>
+          This data represents points from 2015 onward. More information about
+          the data can be found <a href="index.html#data">here</a>. No
+          additional special wrangling has been done for the visualizations on
+          this page. Note that the Zipcodes that are shown are the slowest
+          average to scene zipcodes. The bar chart has the top 26 slowest and
+          the pie chart has the top 12. The bar chart is sorted but the pie
+          chart has no particular ordering.
+        </p>
 
         <h3 id="prototype">Tableau Prototype</h3>
-        <!-- <p>TODO:Made in Tableau button</p> -->
+        <a href="https://www.tableau.com" class="button is-small is-rounded" style="padding: 1em; margin-bottom: 10px;">
+          Created with <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" style="height: 20px; padding-left: 5px;-webkit-filter: invert(100%);filter: invert(100%);" />
+        </a>
         <h5>Prototype 1</h5>
         <img src="prototypes/bar2.png" width="960" height="500"/>
         <h5>Prototype 2</h5>
         <img src="prototypes/pie2.png" width="960" height="500"/>
         <h3 id="analysis">Theme Analysis</h3>
         <h5>Prototype 1</h5>
-        <!-- <p>TODO:Theme Analysis</p> -->
+        <p>
+          The bar chart is intended to show the average amount of time it took
+          for the Fire Department to arrive at the scene. This is broken down
+          into each step it took from response to entry to dispatch to response
+          to the scene. For more information about what these fields mean, see
+          the <a href="index.html#data">data section</a>. From this chart we
+          area able to see the areas with the slowest to scene reaction times.
+          In addition, we are able to see the breakdown of the steps it took to
+          reach the scene.
+        </p>
 
         <h5>Prototype 2</h5>
-        <!-- <p>TODO:Theme Analysis</p> -->
+        <p>
+          While the stacked bar chart is able to clearly show the slowest "to
+          scene" times, it doesn't show parts of a whole very well. In specific,
+          it is difficult to see how much of the "to scene" time was spent from
+          dispatch to scene or any other time segment. In order to supplement
+          this, a small multiples donut chart encoded similarly was added. The
+          small multiples pie chart aims to show more about how the time is
+          broken up.
+        </p>
 
         <h3 id="analysis">Planned Interactivity</h3>
         <h5>Prototype 1</h5>
-        <!-- <p>TODO:Interactivity</p> -->
+        <p>
+          The area chart underneath the stacked bar chart is meant for
+          interactivity. While it shows the average time to scene as an area, it
+          will also serve as a selection window. The points that are brushed,
+          will be reflected in the stacked bar chart. The bar chart itself will
+          be selectable by measure. Ideally, the legend will also be
+          interactable with brushed measures in the bar chart.
+        </p>
         <h5>Prototype 2</h5>
-        <!-- <p>TODO:Interactivity</p> -->
+        <p>
+          The interactions of the pie chart will be more simplistic. Each slice
+          of the donut will brush the given measure. The legend will work
+          similarly.
+        </p>
       </div>
       <!-- End page content -->
     </div>
