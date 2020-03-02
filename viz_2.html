@@ -9,6 +9,8 @@
   <!-- Load Bulma from CDN (consider saving it to repository instead) -->
   <!-- https://bulma.io/ -->
   <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/superhero/bulmaswatch.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 
   <!-- Load Font Awesome 5 (free) icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -91,6 +93,7 @@
   <section class="section">
     <div class="container">
       <!-- Begin page content -->
+      <!-- TODO: Center align content -->
       <div class="content">
         <h1 class="title">
            Prototype
@@ -99,42 +102,37 @@
           Purpose
         </p>
 
-        <p>The purpose of this prototype is to visualize number of alarms in different Neighborhoods of San Francisco, based on Priority.</p>
+        <p>
+          The visualizations on this page have an emphasis the amount of time it
+          took for the the Fire Department to get on the scene. This is divided
+          by zip code. The goal of the visualization is to evaluate which
+          locations receives the relatively slowest service. It is also
+          important to see how the time to on scene is divided (transportation
+          to a destination may account for delays).
+        </p>
 
         <h3 id="wrangling">Wrangling</h3>
 
-        <p>For this prototype, reduce dataset to 5 years and removed null values from Neighborhoods, as well as Priority. Sorted graph as per number of alarms. </p>
+        <!-- <p>TODO:Wrangling</p> -->
 
         <h3 id="prototype">Tableau Prototype</h3>
-        <p>Prototype was done using Tableau.</p>
+        <!-- <p>TODO:Made in Tableau button</p> -->
         <h5>Prototype 1</h5>
-        <img src="prototypes/alarmNeighbour.png" width="960" height="500"/>
-        <h5>Prototype 1 Alternate option</h5>
-        <img src="prototypes/prototype-1 option.png" width="960" height="500"/>
+        <img src="prototypes/bar2.png" width="960" height="500"/>
         <h5>Prototype 2</h5>
-        <img src="prototypes/prototype-3.png" width="960" height="500" />
-        <h5>Prototype 3</h5>
-        <img src="prototypes/heatmap-prototype.png" width="960" height="500" />
+        <img src="prototypes/pie2.png" width="960" height="500"/>
         <h3 id="analysis">Theme Analysis</h3>
         <h5>Prototype 1</h5>
-        <p>So my prototype tells you about number of alarms in different area of San Francisco. It shows maximum number of calls from Tenderloin and most of these calls are prioritized as Emergency.
-        Many of these calls are for life threatening incidents. Least calls are received from Presidio and Treasure Island. </p>
+        <!-- <p>TODO:Theme Analysis</p> -->
 
         <h5>Prototype 2</h5>
-        <p>So this prototype shows different alarms encoded over color and prioritized over size, where 3 is Emergency. It shows Station Area over different zip code. It shows that 94110 has highest station area but least Priority. It relates with first prototype which shows different Neighborhood of SF.  </p>
-
-        <h5>Prototype 3</h5>
-        <p>So heatmap shows that Tenderloin has highest calls and highest response time. Most of the calls are "Life threatening". It shows top 10 Neighborhoods of San Francisco.cd</p>
+        <!-- <p>TODO:Theme Analysis</p> -->
 
         <h3 id="analysis">Planned Interactivity</h3>
         <h5>Prototype 1</h5>
-        <p>Final visualization will have animation, which shows details in tooltip and highlights graph with respect to color class priority. It might also show maximum calls and call type.
-        This is similar kind of Interactivity planned to use.</p>
-        <img src="prototypes/dataVizInt.gif" width="400px" height="500px">
+        <!-- <p>TODO:Interactivity</p> -->
         <h5>Prototype 2</h5>
-        <p>i dont know :- ?</p>
-        <h5>Prototype 3</h5>
-        <p>highlight heatmap with some details.</p>
+        <!-- <p>TODO:Interactivity</p> -->
       </div>
       <!-- End page content -->
     </div>
