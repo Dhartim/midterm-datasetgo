@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Set Go!</title>
+
+  <!-- Load Bulma from CDN (consider saving it to repository instead) -->
+  <!-- https://bulma.io/ -->
+  <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/superhero/bulmaswatch.min.css">
+
+  <!-- Load Font Awesome 5 (free) icons -->
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+  <!-- Page header -->
+  <!-- https://bulma.io/documentation/layout/hero/ -->
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Midterm Project</h1>
+        <h2 class="subtitle">Prototypes</h2>
+      </div>
+    </div>
+  </section>
+  <!-- End page header -->
+
+  <!-- Page navigation -->
+  <!-- https://bulma.io/documentation/components/navbar/ -->
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <span class="icon"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="main-menu" class="navbar-menu has-text-weight-medium">
+        <!-- Left navbar items -->
+        <div class="navbar-start">
+          <a class="navbar-item" href="data.html" title="Data">
+            <span class="icon"><i class="fas fa-table"></i></span>
+            <span>Data</span>
+          </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Prototypes
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item"  href="prot_1.html">
+                <span class="icon"><i class="fas fa-paint-roller"></i></span>
+                <span>Prototypes 1</span>
+              </a>
+              <a class="navbar-item" href="prot_2.html">
+                <span class="icon"><i class="fas fa-brush"></i></span>
+                <span>Prototypes 2</span>
+              </a>
+              <a class="navbar-item is-active" href="prot3.html">
+                <span class="icon"><i class="fas fa-drafting-compass"></i></span>
+                <span>Prototypes 3</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- End page navigation -->
+
+
+  <section class="section">
+    <div class="container">
+      <!-- Begin page content -->
+      <div class="content">
+        <h1 class="title"> Prototypes </h1>
+
+        <h3> Goal </h3>
+        <p>
+          The visualizations on this page are focused on different call types
+          and the reaction time in different neighborhoods.
+        </p>
+
+        <h3 id="wrangling">Wrangling</h3>
+
+        <p>This data represents points from 2015 onward. More information about
+          the data can be found <a href="index.html#data">here</a>. The heatmap
+          shows top 10 neighborhood values and the bar chart shows values where
+          the amount of alarms is bigger than 1500. All null values in both
+          prototypes were removed.
+        </p>
+
+        <h3 id="prototype">Tableau Prototype</h3>
+        <a href="https://www.tableau.com" class="button is-small is-rounded" style="padding: 1em; margin-bottom: 10px;">
+          Created with <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" style="height: 20px; padding-left: 5px;-webkit-filter: invert(100%);filter: invert(100%);" />
+        </a>
+        <h5>Prototype 1</h5>
+        <img src="prototypes/heatmap-prototype.png" width="960" height="500"/>
+        <br/><br/>
+        <h5>Prototype 2</h5>
+        <img src="prototypes/barchart-prot3.png" alt="Barchart Prototype"/>
+
+        <h3 id="analysis">Theme Analysis</h3>
+        <h5>Prototype 1</h5>
+        <p>
+          The heatmap is intended to show the percentage of overall difference
+          in response time by neighborhoods. The top 10 neighborhoods are shown.
+          From this chart we can see the slowest and the fastest response time
+          for each group of incident by neighborhoods. The heatmap also shows
+          the amount of incidents in each group. Using this heatmap we can make
+          the analysis of connection between the response time and the amount of
+          incidents.
+        </p>
+        <h5>Prototype 2</h5>
+        <p>
+          The bar chart shows the whole process time (request time - dispatch
+          time) in minutes by each call type. Each call type shows to which
+          group type it belongs. The color shows the amount of incidents. This
+          chart is made to support the heatmap in showing deeper analysis of
+          incidents by types.
+        <br/>
+        Overall both prototypes are intended to help in analyzing the time of
+        the whole process for each incident and neighborhood.
+        <h3 id="analysis">Planned Interactivity</h3>
+        <p>The planned interactivity for prototype 1. <br/> The heatmap includes two numerical data points that should be known precisely (percentage and number of alarms). The interactivity will allow us to show the number of incidents and the percentage of response time for each cell. Example:</p>
+        <img src="prototypes/animation_heatmap.gif" width="500" height="450" alt="Interactivity">
+        <p>The planned interactivity for prototype 2. <br/> The interactivity for the bar chart will allow us to draw a line for each bar to compare different events and see a number of alarms for each bar. Example:</p>
+        <img src="prototypes/animation_barchart.gif" width="250" height="350" alt="Interactivity">
+      </div>
+      <!-- End page content -->
+    </div>
+  </section>
+
+  <!-- Page footer -->
+  <!-- https://bulma.io/documentation/layout/footer/ -->
+  <footer class="footer">
+    <div class="content has-text-centered is-size-7">
+      <p>
+        <a href="#top">
+          <span class="fas fa-arrow-up"></span>
+          <span class="has-text-weight-medium">Back to Top</span>
+        </a>
+      </p>
+
+      <p>
+        <a href="https://github.com/usf-cs360-spring2020/midterm-datasetgo" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+          <i class="fab fa-github-alt"></i>&nbsp;<strong>Github</strong>
+        </a>
+
+        <a href="https://fontawesome.com/" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+          <i class="fab fa-font-awesome"></i>&nbsp;<strong>FontAwesome</strong>
+        </a>
+
+        <a href="https://bulma.io" class="button is-small">
+          <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128" height="24">
+        </a>
+      </p>
+    </div>
+  </footer>
+  <!-- End page footer -->
+
+  <!-- Mobile menu responsiveness -->
+  <!-- https://bulma.io/documentation/components/navbar/ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach(el => {
+          el.addEventListener('click', () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+          });
+        });
+      }
+    });
+  </script>
+  <!-- End mobile menu responsiveness -->
+</body>
+
+</html>
