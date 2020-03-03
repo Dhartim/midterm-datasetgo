@@ -9,6 +9,7 @@
   <!-- Load Bulma from CDN (consider saving it to repository instead) -->
   <!-- https://bulma.io/ -->
   <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/superhero/bulmaswatch.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <!-- Load Font Awesome 5 (free) icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -100,13 +101,21 @@
         <p>
           Some quick stats about the data defined from the website are:<br />
           <div class="tags is-centered">
-            <span class="tag is-danger is-medium"><b>5.2M</b>&nbsp;Rows</span>
-            <span class="tag is-danger is-medium"><b>34</b>&nbsp;Columns</span>
-            <span class="tag is-danger is-medium">Each row is a&nbsp;<b>Response</b></span>
-            <span class="tag is-danger is-medium"><b>1.77GB</b>&nbsp;CSV file size</span>
-            <span class="tag is-danger is-medium">md5sum checksum:&nbsp;<b>4c1c6aaf464e1aeca7f39c2bca82a0d6</b></span>
-            <span class="tag is-danger is-medium">Last Updated (at retrieval):&nbsp;<b>Feb 12, 2020</b></span>
+            <span class="tag is-danger is-medium is-rounded"><b>5.2M</b>&nbsp;Rows**</span>
+            <span class="tag is-danger is-medium is-rounded"><b>34</b>&nbsp;Columns</span>
+            <span class="tag is-danger is-medium is-rounded">Each row is a&nbsp;<b>Response</b></span>
+            <span class="tag is-danger is-medium is-rounded"><b>1.77GB</b>&nbsp;CSV file size**</span>
+            <span class="tag is-danger is-medium is-rounded">md5sum checksum:&nbsp;<b>4c1c6aaf464e1aeca7f39c2bca82a0d6</b>**</span>
+            <span class="tag is-danger is-medium is-rounded">Last Updated (at retrieval):&nbsp;<b>Feb 12, 2020</b></span>
           </div>
+        </p>
+
+        <p>
+          <strong>
+            **Note that this dataset is constantly being updated, so number like
+            the rows, size of file, and checksum will be different depending on
+            your retrieval time.
+          </strong>
         </p>
 
         <p>The columns defined on the site for the <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">data</a> shown below.
@@ -366,9 +375,25 @@
           </table>
         </div>
         <h3>Filtering</h3>
-        <p>The dataset was reduced to the last 5 years.</p>
+        <p>
+          The dataset was reduced to the last 5 years using the
+          <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">DataSF web interface</a>.
+          Data that is used the visualizations do not use null or malformed
+          entries. No additional filtering or wrangling was done to the data for
+          the visualizations.
+        </p>
         <h3>Used rows</h3>
-        <p>Higlighted rows are used in our visualizations.</p>
+        <p>
+          The fields of the dataset that were used for the visualizations are
+          higlighted in the table above.
+        </p>
+        <h3>Additional Information</h3>
+        <p>
+          If anyone is interested in how the table was generated, feel free to
+          look <a href="https://github.com/usf-cs360-spring2020/midterm-datasetgo/blob/gh-pages/table.py">here</a>.
+          It is just a simple Python program that reads from a file called labels.
+          The labels file is just the descriptions copied from the webpage.
+        </p>
       </div>
       <!-- End page content -->
     </div>
@@ -386,16 +411,20 @@
       </p>
 
       <p>
-        <a href="https://github.com/usf-cs360-spring2020/midterm-datasetgo" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+        <a href="https://github.com/usf-cs360-spring2020/midterm-datasetgo" class="button is-small is-rounded" style="margin-left:10px; padding-left: 1em; padding-right: 1em;">
           <i class="fab fa-github-alt"></i>&nbsp;<strong>Github</strong>
         </a>
 
-        <a href="https://fontawesome.com/" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+        <a href="https://fontawesome.com/" class="button is-small is-rounded" style="margin-left:10px; padding-left: 1em; padding-right: 1em;">
           <i class="fab fa-font-awesome"></i>&nbsp;<strong>FontAwesome</strong>
         </a>
 
-        <a href="https://bulma.io" class="button is-small">
-          <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128" height="24">
+        <a href="https://bulma.io" class="button is-small is-rounded" style="margin-left:10px;">
+          <img src="https://bulma.io/images/bulma-logo-white.png" alt="Made with Bulma" height="24" style="height: 12px;">
+        </a>
+
+        <a href="https://www.tableau.com" class="button is-small is-rounded" style="margin-left:10px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" style="height: 20px; padding-left: 5px;-webkit-filter: invert(100%);filter: invert(100%);" />
         </a>
       </p>
     </div>
