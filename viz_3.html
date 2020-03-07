@@ -24,7 +24,7 @@
     <div class="hero-body">
       <div class="container">
         <h1 class="title">Midterm Project</h1>
-        <h2 class="subtitle">Prototypes</h2>
+        <h2 class="subtitle">Visualizations</h2>
       </div>
     </div>
   </section>
@@ -75,6 +75,7 @@
               </a>
             </div>
           </div>
+
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               Visualizations
@@ -88,12 +89,13 @@
                 <span class="icon"><i class="fas fa-brush"></i></span>
                 <span>Visualization 2</span>
               </a>
-              <a class="navbar-item" href="viz_3.html">
+              <a class="navbar-item is-active" href="viz_3.html">
                 <span class="icon"><i class="fas fa-drafting-compass"></i></span>
                 <span>Visualization 3</span>
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -105,66 +107,33 @@
     <div class="container">
       <!-- Begin page content -->
       <div class="content">
-        <h1 class="title"> Prototypes </h1>
+        <h1 class="title"> Visualizations </h1>
 
-        <h3> Goal </h3>
+        <h3 id="vizualization">D3 Visualization</h3>
         <p>
-          The visualizations on this page are focused on different call types
-          and the reaction time in different neighborhoods.
+          A multi-component interactive visualization using D3.js version 5 (using older versions will not receive full credit).
+          See the Visualizations section for details.
         </p>
 
-        <h3 id="wrangling">Wrangling</h3>
-
-        <p>This data represents points from 2015 onward. More information about
-          the data can be found <a href="index.html#data">here</a>. The heatmap
-          shows top 10 neighborhood values and the bar chart shows values where
-          the amount of alarms is bigger than 1500. All null values in both
-          prototypes were removed.
+        <h3 id="encoding">Data Encoding</h3>
+        <p>
+          The data encoding and how to interpret your visualization(s).
         </p>
 
-        <h3 id="prototype">Tableau Prototype</h3>
-        <a href="https://www.tableau.com" class="button is-small is-rounded" style="padding: 1em; margin-bottom: 10px;">
-          Created with <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" style="height: 20px; padding-left: 5px;-webkit-filter: invert(100%);filter: invert(100%);" />
-        </a>
-        <h5>Prototype 1</h5>
-        <img src="prototypes/heatmap-prototype.png" width="960" height="500"/>
-        <br/><br/>
-        <h5>Prototype 2</h5>
-        <img src="prototypes/barchart-prot3.png" alt="Barchart Prototype"/>
-
-        <h3 id="analysis">Theme Analysis</h3>
-        <h5>Prototype 1</h5>
+        <h3 id="instructions">Instructions</h3>
         <p>
-          The heatmap is intended to show the percentage of overall difference
-          in response time by neighborhoods. The top 10 neighborhoods are shown.
-          From this chart we can see the slowest and the fastest response time
-          for each group of incident by neighborhoods. The heatmap also shows
-          the amount of incidents in each group. Using this heatmap we can make
-          the analysis of connection between the response time and the amount of
-          incidents.
+          Instructions on how to interact with your visualization(s).
         </p>
-        <h5>Prototype 2</h5>
+
+        <h3 id="analysis">Analysis</h3>
         <p>
-          The bar chart shows the whole process time (request time - dispatch
-          time) in minutes by each call type. Each call type shows to which
-          group type it belongs. The color shows the amount of incidents. This
-          chart is made to support the heatmap in showing deeper analysis of
-          incidents by types.
-        <br/>
-        Overall both prototypes are intended to help in analyzing the time of
-        the whole process for each incident and neighborhood.
-        <h3 id="analysis">Planned Interactivity</h3>
-        <h5>Prototype 1</h5>
-        <p>The heatmap includes two numerical data points that should be known precisely (percentage and number of alarms). The interactivity will allow us to show the number of incidents and the percentage of response time for each cell. Example:</p>
-        <img src="prototypes/animation_heatmap.gif" width="500" height="450" alt="Interactivity">
-        <p>Gif animation was done using Tableau.
-        <h5>Prototype 2</h5>
-        <p>The interactivity for the bar chart will allow us to draw a line for each bar to compare different events and see a number of alarms for each bar. Example:</p>
-        <img src="prototypes/animation_barchart.gif" width="250" height="350" alt="Interactivity">
-        <p>From: <a href="https://observablehq.com/@sjengle/interactivity-lab?collection=@sjengle/interactive-scatterplot">Interactivity Lab</a></p>
-        <h3 id="feedback">Peer Feedback</h3>
+          One or two findings that can be learned from your visualization(s)
+          and how that supports the theme of the group project.
+        </p>
+
+        <h3 id="inspiration">Inspirations</h3>
         <p>
-          The peer feedback you received and how this impacted the final version of your visualizations.
+          Any inspirations for your visualization(s) (including both design and functionality).
         </p>
       </div>
       <!-- End page content -->
