@@ -12,6 +12,13 @@
 
   <!-- Load Font Awesome 5 (free) icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <!-- include d3.js v5 -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- include d3.js modules -->
+  <script src="https://d3js.org/d3-array.v2.min.js"></script>
+  <script src="chartviz1.js"></script>
+  <script src="countDataviz1.js" charset="utf-8"></script>
   <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -113,6 +120,23 @@
         <p>
           A multi-component interactive visualization using D3.js version 5 (using older versions will not receive full credit).
           See the Visualizations section for details.
+          <svg class="barchart"></svg>
+          <script type="text/javascript">
+          // d3.csv("Fire_Dataset.csv", convertRow).then(drawBarChart);
+          d3.csv('Fire_Dataset.csv')
+          .then(function(data) {
+       // data is now whole data set
+       // draw chart in here!
+       console.log("data loaded:");
+       console.log(data);
+
+       data.forEach(function(d) {
+         d['Number of Alarms'] = +d['Number of Alarms'];
+       });
+
+       drawBarChart(data);
+   })
+      </script>
         </p>
 
         <h3 id="encoding">Data Encoding</h3>

@@ -1,3 +1,36 @@
+body{
+  margin: 10px;
+  padding: 0px;
+}
+
 img, table {
   border-radius: 5px;
+}
+
+.barchart
+{
+  font-family: Roboto;
+  width: 950px;
+  height: 490px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+
+}
+.x-axis-label,
+.y-axis-label
+{
+  font-size: 8pt;
+  fill: #88888;
+  font-weight: bolder;
+}
+
+#x-axis text,
+.text,
+#y-axis text {
+  font-family: Roboto;
+  font-size: 8pt;
+  fill: #88888;
+  font-weight: 200;
+  color: black;
 }
