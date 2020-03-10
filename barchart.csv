@@ -1,0 +1,41 @@
+Call Type Group,Neighborhooods - Analysis Boundaries,Priority,Number of Alarms
+Potentially Life-Threatening,Outer Richmond,2,18399
+Potentially Life-Threatening,Castro/Upper Market,2,19668
+Potentially Life-Threatening,Nob Hill,2,24328
+Potentially Life-Threatening,Western Addition,3,26599
+Potentially Life-Threatening,Sunset/Parkside,2,27932
+Potentially Life-Threatening,Bayview Hunters Point,2,40145
+Potentially Life-Threatening,Financial District/South Beach,2,51658
+Potentially Life-Threatening,Mission,2,72647
+Potentially Life-Threatening,South of Market,3,93045
+Potentially Life-Threatening,Tenderloin,3,124344
+Non Life-threatening,Outer Richmond,2,9714
+Non Life-threatening,Castro/Upper Market,2,10527
+Non Life-threatening,Nob Hill,2,11491
+Non Life-threatening,Western Addition,2,13458
+Non Life-threatening,Sunset/Parkside,2,14918
+Non Life-threatening,Bayview Hunters Point,2,18973
+Non Life-threatening,Financial District/South Beach,3,26651
+Non Life-threatening,Mission,2,37199
+Non Life-threatening,South of Market,3,42791
+Non Life-threatening,Tenderloin,3,55072
+Fire,Outer Richmond,1,2427
+Fire,Castro/Upper Market,2,1700
+Fire,Nob Hill,1,1096
+Fire,Western Addition,1,1229
+Fire,Sunset/Parkside,1,2320
+Fire,Bayview Hunters Point,2,5680
+Fire,Financial District/South Beach,2,4071
+Fire,Mission,2,5198
+Fire,South of Market,2,2298
+Fire,Tenderloin,2,2308
+Alarm,Outer Richmond,2,9769
+Alarm,Castro/Upper Market,2,9670
+Alarm,Nob Hill,2,15224
+Alarm,Western Addition,2,13639
+Alarm,Sunset/Parkside,2,12201
+Alarm,Bayview Hunters Point,2,16324
+Alarm,Financial District/South Beach,2,33218
+Alarm,Mission,2,27236
+Alarm,South of Market,2,27843
+Alarm,Tenderloin,2,38512
