@@ -9,15 +9,15 @@
   <!-- Load Bulma from CDN (consider saving it to repository instead) -->
   <!-- https://bulma.io/ -->
   <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/superhero/bulmaswatch.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/timebar.css">
 
   <!-- Load Font Awesome 5 (free) icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <link rel="stylesheet" href="css/style.css">
-
+  <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 
 <body>
-
   <!-- Page header -->
   <!-- https://bulma.io/documentation/layout/hero/ -->
   <section class="hero is-primary is-bold">
@@ -110,10 +110,16 @@
         <h1 class="title"> Visualizations </h1>
 
         <h3 id="vizualization">D3 Visualization</h3>
-        <p>
-          A multi-component interactive visualization using D3.js version 5 (using older versions will not receive full credit).
-          See the Visualizations section for details.
-        </p>
+        <svg id="timebar" width="960" height="500">
+          <!-- actual visualization on top -->
+          <g id="plot">
+            <g id="bars"></g>
+          </g>
+          <g id="x"></g>
+          <g id="y"></g>
+          <g id="legend">
+          </g>
+        </svg>
 
         <h3 id="encoding">Data Encoding</h3>
         <p>
@@ -171,6 +177,8 @@
     </div>
   </footer>
   <!-- End page footer -->
+
+  <script src="js/timebar.js"></script>
 
   <!-- Mobile menu responsiveness -->
   <!-- https://bulma.io/documentation/components/navbar/ -->
