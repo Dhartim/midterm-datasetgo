@@ -13,6 +13,10 @@
   <!-- Load Font Awesome 5 (free) icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/heatmap.css">
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="heatmap.js"></script>
 
 </head>
 
@@ -114,6 +118,18 @@
           A multi-component interactive visualization using D3.js version 5 (using older versions will not receive full credit).
           See the Visualizations section for details.
         </p>
+
+        <h3 id="visualizations">Visualization</h3>
+            <script type="text/javascript">
+              d3.csv("data/heatmap.csv").then(drawHeatmap);
+            </script>
+            <svg id="heatmap" width="960" height="600"></svg>
+            <pre>
+            Heatmap represents Neighborhooods vs. Call Type Group.
+            Color shows sum of number of incidents by each call type. Response time by minutes and number of incidents are shown on tooltips.
+            The Call Type Group filter keeps all not null values. The Neighborhooods filter keeps 10 of 42 members sorted by alphabet.
+            Data acquired from "Fire Department Calls for Service" from <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/</a>.</br>
+            <small>Elizaveta Ozerova</small></pre>
 
         <h3 id="encoding">Data Encoding</h3>
         <p>

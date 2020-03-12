@@ -1,0 +1,19 @@
+Calculation1 (AVG),Call Type,Call Type Group,Number of Alarms (SUM)
+1.64022125387918,Structure Fire,Alarm,124433
+3.73053720195346,Smoke Investigation (Outside),Alarm,3481
+1.02670004171882,Outside Fire,Alarm,2397
+3.61291057095691,Other,Alarm,17567
+2.90985748218527,Gas Leak (Natural and LP Gases),Alarm,8420
+2.77869012707722,Elevator / Escalator Rescue,Alarm,5115
+2.96980337078652,Electrical Hazard,Alarm,5696
+4.31955064665345,Citizen Assist / Service Call,Alarm,21186
+2.16550829962105,Alarms,Alarm,179707
+4.45742067553736,Water Rescue,Fire,9770
+3.12807974421666,Vehicle Fire,Fire,5317
+10.326773138833,Structure Fire,Fire,20224
+3.16780688581122,Outside Fire,Fire,17979
+3.63168880455408,Traffic Collision,Non Life-threatening,26350
+5.22397929844738,Other,Non Life-threatening,3478
+3.48259309407196,Medical Incident,Non Life-threatening,358938
+2.27704979408461,Traffic Collision,Potentially Life-Threatening,42736
+2.60987916175815,Medical Incident,Potentially Life-Threatening,731722

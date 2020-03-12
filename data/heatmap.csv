@@ -1,0 +1,41 @@
+min,calltype,neighborhoood,alarms
+2.568066469,Potentially Life-Threatening,Western Addition,26599
+3.535626718,Non Life-threatening,Western Addition,13459
+3.94078319,Fire,Western Addition,1229
+2.153383679,Alarm,Western Addition,13639
+2.501805373,Potentially Life-Threatening,Tenderloin,124351
+3.482378575,Non Life-threatening,Tenderloin,55075
+3.330353152,Fire,Tenderloin,2308
+2.219619859,Alarm,Tenderloin,38512
+2.460439639,Potentially Life-Threatening,Sunset/Parkside,27932
+3.606944165,Non Life-threatening,Sunset/Parkside,14919
+4.196257417,Fire,Sunset/Parkside,2320
+2.346825072,Alarm,Sunset/Parkside,12205
+2.574227524,Potentially Life-Threatening,South of Market,93045
+3.565860498,Non Life-threatening,South of Market,42795
+3.508225878,Fire,South of Market,2298
+2.174077,Alarm,South of Market,27844
+2.68362411,Potentially Life-Threatening,Outer Richmond,18399
+3.581737698,Non Life-threatening,Outer Richmond,9714
+5.32426405,Fire,Outer Richmond,2427
+2.561060497,Alarm,Outer Richmond,9769
+2.646169023,Potentially Life-Threatening,Nob Hill,24328
+3.390131407,Non Life-threatening,Nob Hill,11491
+3.428571429,Fire,Nob Hill,1096
+2.043615552,Alarm,Nob Hill,15224
+2.59732412,Potentially Life-Threatening,Mission,72649
+3.300962262,Non Life-threatening,Mission,37204
+9.186150078,Fire,Mission,5198
+2.186003818,Alarm,Mission,27236
+2.669847845,Potentially Life-Threatening,Financial District/South Beach,51658
+3.557840231,Non Life-threatening,Financial District/South Beach,26651
+7.703128911,Fire,Financial District/South Beach,4071
+2.113914143,Alarm,Financial District/South Beach,33218
+2.624720358,Potentially Life-Threatening,Castro/Upper Market,19668
+3.168598024,Non Life-threatening,Castro/Upper Market,10528
+8.67848882,Fire,Castro/Upper Market,1700
+2.07590486,Alarm,Castro/Upper Market,9670
+2.604508656,Potentially Life-Threatening,Bayview Hunters Point,40145
+3.6004849,Non Life-threatening,Bayview Hunters Point,18973
+5.690485006,Fire,Bayview Hunters Point,5680
+2.733312921,Alarm,Bayview Hunters Point,16330
