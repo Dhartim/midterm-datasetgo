@@ -1,0 +1,19 @@
+minutes,calltype,callgroup,alarms
+1.640221254,Structure Fire,Alarm,124433
+3.730537202,Smoke Investigation (Outside),Alarm,3481
+1.026700042,Outside Fire,Alarm,2397
+3.612910571,Other,Alarm,17567
+2.909857482,Gas Leak (Natural and LP Gases),Alarm,8420
+2.778690127,Elevator / Escalator Rescue,Alarm,5115
+2.969803371,Electrical Hazard,Alarm,5696
+4.319550647,Citizen Assist / Service Call,Alarm,21186
+2.1655083,Alarms,Alarm,179707
+4.457420676,Water Rescue,Fire,9770
+3.128079744,Vehicle Fire,Fire,5317
+10.32677314,Structure Fire,Fire,20224
+3.167806886,Outside Fire,Fire,17979
+3.631688805,Traffic Collision,Non Life-threatening,26350
+5.223979298,Other,Non Life-threatening,3478
+3.482593094,Medical Incident,Non Life-threatening,358938
+2.277049794,Traffic Collision,Potentially Life-Threatening,42736
+2.609879162,Medical Incident,Potentially Life-Threatening,731722
