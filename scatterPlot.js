@@ -75,9 +75,6 @@ let drawScatterPlot = function(data){
         .text("Station Areas  ");
     let color = d3.scaleOrdinal()
                   .range(d3.schemeCategory10)
-      // .domain([callType])
-      // .range(["red", "blue", "green", "yellow"])
-    //console.log(data.map(a => a.callType));
     //create buubbles
     let bubble = svg.selectAll('.bubble')
     .data(data)
@@ -87,9 +84,10 @@ let drawScatterPlot = function(data){
     .attr('cy', function(d){ return stationAreaY(d.stationArea); })
     .attr('r', d => d.priority*3)
     .attr("transform", translate(2*margin.left + margin.right, margin.top - margin.right))
-    .style('fill', d => color(d.callType));//function(d){ return color(callType); });
+    .style('fill', d => color(d.callType));
 
-
+    //interactivity in chart
+    //let cells = d3.select(bubble).select("g#rect").selectAll("bubble");
 };
 
 

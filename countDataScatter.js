@@ -24,13 +24,5 @@ function convertRow(row, index)
         out.stationArea = +(row[col]);
     }
   }
-  // [...data].forEach( function(d) {
-  //   out['Priority'] = +d['Priority'];
-  //    out['Number of Alarms'] = +d['Number of Alarms'];
-  //    out['Station Area'] = +d['Station Area'];
-  //    out['Zipcode of Incident'] = d['Zipcode of Incident'];
-  //    out['Call Type Group'] = d['Call Type Group'];
-     //return out;
-  //});
   return out;
 }
