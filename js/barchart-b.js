@@ -4,12 +4,12 @@ function drawBarchart(data) {
       top: 30,
       right: 30,
       bottom: 30,
-      left: 200
+      left: 250
     },
     width = 960 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
-  let f = d3.format(".0f");
+  let f = d3.format(".2f");
 
   let svg = d3.select("#barchart-b")
     .append("svg")
@@ -25,7 +25,6 @@ function drawBarchart(data) {
     return parseFloat(d.minutes);
   }).keys()
   var arr = eval(myVars);
-
 
   let x = d3.scaleLinear()
     .range([0, width])
@@ -45,13 +44,11 @@ function drawBarchart(data) {
     .range(["#F4D166", "#E4651E", "#9E3A26"])
     .domain([2000, 50000, 732000]);
 
-  //  const g = svg.append("g").attr("id", "rect");
-  var bars = svg.selectAll(".bar")
+  let bars = svg.selectAll(".bar")
     .data(data)
     .enter()
     .append("g")
 
-  //append rects
   bars.append("rect")
     .attr("class", "bar")
     .attr("y", function(d) {
@@ -63,14 +60,97 @@ function drawBarchart(data) {
       return x(d.minutes);
     })
     .style("fill", function(d) {
-      return myColor(d.alarms)
+      return myColor(d.alarms);
     });
 
+  let annotations = svg.append("g").attr("id", "annotation");
 
+//create legend
+let legendColor = d3.scaleLinear()
+  .range(["#F4D166", "#9E3A26"])
+  .domain([2000, 732000]);
+
+  const defs = svg.append("defs");
+
+  const linearGradient = defs.append("linearGradient")
+    .attr("id", "linear-gradient");
+
+  linearGradient.selectAll("stop")
+    .data(legendColor.ticks().map((t, i, n) => ({
+      offset: `${100*i/n.length}%`,
+      color: legendColor(t)
+    })))
+    .enter().append("stop")
+    .attr("offset", d => d.offset)
+    .attr("stop-color", d => d.color);
+
+  svg
+    .append('g')
+    .attr("transform", translate(400, margin.top))
+    .append("rect")
+    .attr('transform', translate(margin.left-100, 0))
+    .attr("width", width - 2 * margin.right - 2*margin.left + 50)
+    .attr("height", 10)
+    .style("fill", "url(#linear-gradient)");
+
+  svg
+    .append("text")
+    .attr("class", "legend-text")
+    .attr("x", width - 10)
+    .attr("y", margin.top + 25)
+    .text("731,722")
+    .attr("alignment-baseline", "middle")
+    .style('fill', 'white');
+
+  svg
+    .append("text")
+    .attr("class", "legend-text")
+    .attr("x", width - 130)
+    .attr("y", margin.top + 25)
+    .text("2,397")
+    .attr("alignment-baseline", "middle")
+    .style('fill', 'white');
+
+
+  //interactivity
+  bars.on("mouseover", function(d) {
+    bars.filter(e => (d.calltype !== e.calltype))
+      .transition()
+      .attr("fill-opacity", "0.2")
+
+    svg.append('line')
+      .attr('id', 'limit')
+      .attr('x1', x(d.minutes))
+      .attr('y1', 0)
+      .attr('x2', x(d.minutes))
+      .attr('y2', height)
+      .attr('stroke', 'red')
+
+    let me = d3.select(this);
+    annotations.insert("text")
+      .attr("id", "label")
+      .attr("x", x(d.minutes))
+      .attr("y", y(d.calltype))
+      .attr("text-anchor", "middle")
+      .text(f(d.minutes) + " minutes")
+      .style('fill', 'white');
+  });
+
+  bars.on("mouseout", function(d) {
+    bars
+      .transition()
+      .attr("fill-opacity", "1");
+    svg
+      .selectAll('#limit').remove()
+    annotations
+      .select("text#label").remove();
+  });
 
 
 
   function translate(x, y) {
     return 'translate(' + x + ',' + y + ')';
   }
+
+
 }

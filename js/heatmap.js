@@ -24,11 +24,11 @@ function drawHeatmap(data) {
   }).keys()
 
   let x = d3.scaleBand()
-    .range([0, width])
+    .range([0, width - 100])
     .domain(myVars)
     .padding(0.01);
   svg.append("g")
-  //  .attr("transform", translate(0, height))
+    //  .attr("transform", translate(0, height))
     .call(d3.axisTop(x))
 
   let y = d3.scaleBand()
@@ -66,21 +66,21 @@ function drawHeatmap(data) {
 
   cells.on("mouseover.hover", function(d) {
     d3.select(this)
-        .raise()
-        .style("stroke", "red")
-        .style("stroke-width", 2);
+      .raise()
+      .style("stroke", "red")
+      .style("stroke-width", 2);
 
-  let div = d3.select("body").append("div");
+    let div = d3.select("body").append("div");
 
-  div.attr("id", "details");
-  div.attr("class", "tooltip");
+    div.attr("id", "details");
+    div.attr("class", "tooltip");
 
-  let dataNew = createTooltip(Object(d));
-  let rows = div.append("tablenew")
-    .selectAll("tr")
-    .data(Object.keys(dataNew))
-    .enter()
-    .append("tr");
+    let dataNew = createTooltip(Object(d));
+    let rows = div.append("tablenew")
+      .selectAll("tr")
+      .data(Object.keys(dataNew))
+      .enter()
+      .append("tr");
 
     rows.append("th").text(key => key);
     rows.append("td").text(key => dataNew[key]);
@@ -91,15 +91,62 @@ function drawHeatmap(data) {
     let div = d3.select("div#details");
     let bbox = div.node().getBoundingClientRect();
 
-//TODO: CHECK WHATS WRONG
+    //TODO: CHECK WHATS WRONG
     div.style("left", d3.event.clientX + "px")
-    div.style("top", (d3.event.clientY + 2*bbox.height) + "px");
+    div.style("top", (d3.event.clientY + 2 * bbox.height) + "px");
   });
 
   cells.on("mouseout.hover", function(d) {
     d3.select(this).style("stroke", null);
     d3.selectAll("div#details").remove();
   });
+
+  //create legend
+  let legendColor = d3.scaleLinear()
+    .range(["#F4D166", "#9E3A26"])
+    .domain([2000, 732000]);
+
+  const defs = svg.append("defs");
+
+  const linearGradient = defs.append("linearGradient")
+    .attr("id", "linear-gradient");
+
+  linearGradient.selectAll("stop")
+    .data(legendColor.ticks().map((t, i, n) => ({
+      offset: `${100*i/n.length}%`,
+      color: legendColor(t)
+    })))
+    .enter().append("stop")
+    .attr("offset", d => d.offset)
+    .attr("stop-color", d => d.color);
+
+  svg
+    .append('g')
+    .attr("transform", translate(450, 10))
+    .append("rect")
+    .attr('transform', translate(margin.left, 0))
+    .attr("width", width - 3 * margin.right - 2 * margin.left - 100)
+    .attr("height", 10)
+    .style("fill", "url(#linear-gradient)");
+
+  svg
+    .append("text")
+    .attr("class", "legend-text")
+    .attr("x", width - 10)
+    .attr("y", margin.top + 5)
+    .text("731,722")
+    .attr("alignment-baseline", "middle")
+    .style('fill', 'white');
+
+  svg
+    .append("text")
+    .attr("class", "legend-text")
+    .attr("x", width - 80)
+    .attr("y", margin.top + 5)
+    .text("2,397")
+    .attr("alignment-baseline", "middle")
+    .style('fill', 'white');
+
 
   // helper method to make translating easier
   function translate(x, y) {

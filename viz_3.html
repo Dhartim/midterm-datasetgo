@@ -121,23 +121,29 @@
         </p>
 
         <h3 id="visualizations">Visualization</h3>
-            <script type="text/javascript">
+        <script type="text/javascript">
               d3.csv("data/heatmap.csv").then(drawHeatmap);
-            </script>
-            <svg id="heatmap" width="960" height="600"></svg>
+        </script>
+        <svg id="heatmap" width="960" height="600"></svg>
         <pre>
         Heatmap represents Neighborhooods vs. Call Type Group.
-        Color shows sum of number of incidents by each call type. Response time by minutes and number of incidents are shown on tooltips.
+        Color shows sum of number of incidents by each call type group. Response time by minutes and number of incidents are shown on tooltips.
         The Call Type Group filter keeps all not null values. The Neighborhooods filter keeps 10 of 42 members sorted by alphabet.
         Data acquired from "Fire Department Calls for Service" from <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/</a>.</br>
         <small>Elizaveta Ozerova</small></pre>
-
 
         <h3 id="visualizations">Visualization</h3>
         <script type="text/javascript">
                   d3.csv("data/barchart-b.csv").then(drawBarchart);
         </script>
         <svg id="barchart-b" width="960" height="600"></svg>
+        <pre>
+        Barchart average of response process time for each Call Type broken down by Call Type Group.
+        Color shows sum of number of incidents by each call type. The Call Type Group filter keeps all not null values.
+        The number of incidents is filtered by ranges from 1,500 to 731,722.
+        Data acquired from "Fire Department Calls for Service" from <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/</a>.</br>
+        <small>Elizaveta Ozerova</small></pre>
+
 
         <h3 id="encoding">Data Encoding</h3>
         <p>
