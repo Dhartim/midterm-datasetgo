@@ -102,7 +102,7 @@ function drawBarchart(data) {
 
   svg
     .append('g')
-    .attr("transform", translate(400, margin.top))
+    .attr("transform", translate(400, 0))
     .append("rect")
     .attr('transform', translate(margin.left - 200, 0))
     .attr("width", width - 2 * margin.right - 2 * (margin.left-100) + 50)
@@ -113,7 +113,7 @@ function drawBarchart(data) {
     .append("text")
     .attr("class", "legend-text")
     .attr("x", width - 10)
-    .attr("y", margin.top + 25)
+    .attr("y", 25)
     .text("731,722")
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
@@ -122,7 +122,7 @@ function drawBarchart(data) {
     .append("text")
     .attr("class", "legend-text")
     .attr("x", width - 130)
-    .attr("y", margin.top + 25)
+    .attr("y", 25)
     .text("2,397")
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
@@ -130,8 +130,8 @@ function drawBarchart(data) {
   svg
     .append("text")
     .attr("class", "text")
-    .attr("x", width - 85)
-    .attr("y", margin.top-10)
+    .attr("x", width - 90)
+    .attr("y", -10)
     .text("# of Incidents")
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
