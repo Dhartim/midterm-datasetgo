@@ -35,3 +35,17 @@ img, table {
   font-weight: 200;
   color: black;
 }
+
+.tooltip {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 8px;
+  background: #ddd;
+  pointer-events: none;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 10pt;
+  color: black;
+}
