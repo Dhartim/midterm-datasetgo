@@ -127,6 +127,15 @@ function drawBarchart(data) {
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
 
+  svg
+    .append("text")
+    .attr("class", "text")
+    .attr("x", width - 85)
+    .attr("y", margin.top-10)
+    .text("# of Incidents")
+    .attr("alignment-baseline", "middle")
+    .style('fill', 'white');
+
 
   //interactivity
   bars.on("mouseover", function(d) {
@@ -222,6 +231,23 @@ function drawBarchart(data) {
     .style("text-anchor", "middle")
     .style('fill', 'white')
     .text("Potentially Life-Threatening");
+
+// main lables
+svg
+  .append("text")
+  .attr("class", "mainlabel")
+  .attr("transform", translate(55 - margin.left, -15))
+  .style("text-anchor", "middle")
+  .style('fill', 'white')
+  .text("Call Type Group");
+
+  svg
+    .append("text")
+    .attr("class", "mainlabel")
+    .attr("transform", translate(275 - margin.left, -15))
+    .style("text-anchor", "middle")
+    .style('fill', 'white')
+    .text("Call Type");
 
 
   function translate(x, y) {

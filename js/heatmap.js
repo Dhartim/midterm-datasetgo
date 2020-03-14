@@ -147,6 +147,14 @@ function drawHeatmap(data) {
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
 
+  svg
+    .append("text")
+    .attr("class", "legend-text")
+    .attr("x", width - 60)
+    .attr("y", margin.top-28)
+    .text("# of Incidents")
+    .attr("alignment-baseline", "middle")
+    .style('fill', 'white');
 
   // helper method to make translating easier
   function translate(x, y) {
