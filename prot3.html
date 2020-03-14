@@ -61,7 +61,7 @@
             </a>
 
             <div class="navbar-dropdown">
-              <a class="navbar-item"  href="prot_1.html">
+              <a class="navbar-item" href="prot_1.html">
                 <span class="icon"><i class="fas fa-paint-roller"></i></span>
                 <span>Prototypes 1</span>
               </a>
@@ -122,18 +122,57 @@
           prototypes were removed.
         </p>
 
-        <h3 id="prototype">Tableau Prototype</h3>
+        <h3 id="prototype">Neighborhooods vs. call type group heatmap prototype</h3>
         <a href="https://www.tableau.com" class="button is-small is-rounded" style="padding: 1em; margin-bottom: 10px;">
           Created with <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" style="height: 20px; padding-left: 5px;-webkit-filter: invert(100%);filter: invert(100%);" />
         </a>
-        <h5>Prototype 1</h5>
-        <img src="prototypes/heatmap-prototype.png" width="960" height="500"/>
-        <br/><br/>
-        <h5>Prototype 2</h5>
-        <img src="prototypes/barchart-prot3.png" alt="Barchart Prototype"/>
+        </br>
+        <img src="prototypes/heatmap-prototype.png" width="960" height="500" />
+        </br>
+        <h3 id="feedback">Peer Feedback</h3>
+        <style>
+          table.grades tbody tr td:nth-child(1),
+          table.grades tbody tr td:nth-child(2) {
+            text-align: center;
+          }
+        </style>
 
+        <!-- https://bulma.io/documentation/elements/table/ -->
+        <table class="table is-hoverable is-bordered grades">
+          <thead>
+            <tr class="is-selected">
+              <th>
+                <center>Suggestions</center>
+              </th>
+              <th>
+                <center>Improvements</center>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hide the exact percentage though, and only show it in interactivity.</td>
+              <td>Showed minutes and # of incidents with "details on demand".</td>
+            </tr>
+            <tr>
+              <td>It also threw me off what the encoding at 0% and 100% meant.</td>
+              <td>Changed to show minutes, not percents.</td>
+            </tr>
+            <tr>
+              <td>Data-ink ratio very high.</td>
+              <td>Reduced by showing more with interactivity.</td>
+            </tr>
+            <tr>
+              <td>Changing orientation may help to show more data better.</td>
+              <td>Orientation was changed, x and y switched.</td>
+            </tr>
+            <tr>
+              <td>Sorting.</td>
+              <td>Neighborhooods were sorted by alphabet.</td>
+            </tr>
+          </tbody>
+        </table>
         <h3 id="analysis">Theme Analysis</h3>
-        <h5>Prototype 1</h5>
         <p>
           The heatmap is intended to show the percentage of overall difference
           in response time by neighborhoods. The top 10 neighborhoods are shown.
@@ -143,29 +182,39 @@
           the analysis of connection between the response time and the amount of
           incidents.
         </p>
-        <h5>Prototype 2</h5>
+        <h3 id="analysis">Planned Interactivity</h3>
+        <p>The heatmap includes two numerical data points that should be known precisely (percentage and number of alarms). The interactivity will allow us to show the number of incidents and the percentage of response time for each cell. Example:
+        </p>
+        <img src="prototypes/animation_heatmap.gif" width="500" height="450" alt="Interactivity">
+        <p>Gif animation was done using Tableau.</p>
+
+      </br>
+
+        <h3>Response process time for each call type barchart prototype</h3>
+        <a href="https://www.tableau.com" class="button is-small is-rounded" style="padding: 1em; margin-bottom: 10px;">
+          Created with <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" style="height: 20px; padding-left: 5px;-webkit-filter: invert(100%);filter: invert(100%);" />
+        </a>
+        </br>
+        <img src="prototypes/barchart-prot3.png" alt="Barchart Prototype" />
+        </br>
+        <h3 id="feedback">Peer Feedback</h3>
+        <p>
+          Haven't had any suggestions in peer feedback for bar chart prototype.
+        </p>
+        <h3 id="analysis">Theme Analysis</h3>
         <p>
           The bar chart shows the whole process time (request time - dispatch
           time) in minutes by each call type. Each call type shows to which
           group type it belongs. The color shows the amount of incidents. This
           chart is made to support the heatmap in showing deeper analysis of
           incidents by types.
-        <br/>
-        Overall both prototypes are intended to help in analyzing the time of
-        the whole process for each incident and neighborhood.
-        <h3 id="analysis">Planned Interactivity</h3>
-        <h5>Prototype 1</h5>
-        <p>The heatmap includes two numerical data points that should be known precisely (percentage and number of alarms). The interactivity will allow us to show the number of incidents and the percentage of response time for each cell. Example:</p>
-        <img src="prototypes/animation_heatmap.gif" width="500" height="450" alt="Interactivity">
-        <p>Gif animation was done using Tableau.
-        <h5>Prototype 2</h5>
-        <p>The interactivity for the bar chart will allow us to draw a line for each bar to compare different events and see a number of alarms for each bar. Example:</p>
-        <img src="prototypes/animation_barchart.gif" width="250" height="350" alt="Interactivity">
-        <p>From: <a href="https://observablehq.com/@sjengle/interactivity-lab?collection=@sjengle/interactive-scatterplot">Interactivity Lab</a></p>
-        <h3 id="feedback">Peer Feedback</h3>
-        <p>
-          The peer feedback you received and how this impacted the final version of your visualizations.
-        </p>
+          <br />
+          Overall both prototypes are intended to help in analyzing the time of
+          the whole process for each incident and neighborhood.
+          <h3 id="analysis">Planned Interactivity</h3>
+          <p>The interactivity for the bar chart will allow us to draw a line for each bar to compare different events and see a number of alarms for each bar. Example:</p>
+          <img src="prototypes/animation_barchart.gif" width="250" height="350" alt="Interactivity">
+          <p>From: <a href="https://observablehq.com/@sjengle/interactivity-lab?collection=@sjengle/interactive-scatterplot">Interactivity Lab</a></p>
       </div>
       <!-- End page content -->
     </div>

@@ -1,0 +1,27 @@
+text {
+  font-family: sans-serif;
+  font-size: 10pt;
+}
+
+.dim {
+  fill-opacity: 0.3;
+}
+
+.tooltip {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 8px;
+  background: #ddd;
+  pointer-events: none;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  font-family: sans-serif;
+  font-size: 10pt;
+  color: black;
+}
+
+.legend-text {
+  font-family: sans-serif;
+  font-size: 8pt;
+}

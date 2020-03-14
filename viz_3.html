@@ -13,7 +13,12 @@
   <!-- Load Font Awesome 5 (free) icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/heatmap.css">
+  <link rel="stylesheet" href="css/barchart-b.css">
 
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="js/heatmap.js"></script>
+  <script src="js/barchart-b.js"></script>
 </head>
 
 <body>
@@ -109,31 +114,92 @@
       <div class="content">
         <h1 class="title"> Visualizations </h1>
 
-        <h3 id="vizualization">D3 Visualization</h3>
-        <p>
-          A multi-component interactive visualization using D3.js version 5 (using older versions will not receive full credit).
-          See the Visualizations section for details.
-        </p>
+        <h2 id="visualizations">Neighborhooods vs. call type group heatmap</h2>
+      </br>
+        <script type="text/javascript">
+              d3.csv("data/heatmap.csv").then(drawHeatmap);
+        </script>
+        <svg id="heatmap" width="960" height="600"></svg>
+        <pre>
+        Heatmap represents Neighborhooods vs. Call Type Group.
+        Color shows sum of number of incidents by each call type group. Response time by minutes and number of incidents are shown on tooltips.
+        The Call Type Group filter keeps all not null values. The Neighborhooods filter keeps 10 of 42 members sorted by alphabet.
+        Data acquired from "Fire Department Calls for Service" from <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/</a>.</br>
+        <small>Elizaveta Ozerova</small></pre>
 
         <h3 id="encoding">Data Encoding</h3>
         <p>
-          The data encoding and how to interpret your visualization(s).
+          This data represents points from 2015 onward. The heatmap shows top 10 neighborhood values. All null values were removed.
+          The data was downloaded from Tableau prototype implementation and can be found <a href="https://github.com/usf-cs360-spring2020/midterm-datasetgo/tree/gh-pages/data/heatmap.csv">here</a>.
         </p>
 
         <h3 id="instructions">Instructions</h3>
         <p>
-          Instructions on how to interact with your visualization(s).
+          <p>The heatmap includes two numerical data points that should be known precisely (percentage and number of alarms). The interactivity allows us to show the number of incidents and the response time in minutes for each cell. Interactivity example:</p>
+          <img src="prototypes/animation_heatmap_d3.gif" width="600" height="600" alt="Interactivity">
         </p>
 
         <h3 id="analysis">Analysis</h3>
         <p>
-          One or two findings that can be learned from your visualization(s)
-          and how that supports the theme of the group project.
+          From the heatmap we can see which neighborhoods get the slowest and the fastest response times and how it correlates with number of incidents in a particular neighborhood.
+          For example, Tenderloin has a lot of "Potentially Life-Threatening incidents" and the response time is fast, though for Castro/Upper Market neighborhood we can see that the amount of "Fire" incidents is very low, while the response time is very high.
+          From such examples we can make a conclusion that there is a correlation between response time and number of incidents. The more incidents happens in a particular area, the faster this area is being processed.
         </p>
 
         <h3 id="inspiration">Inspirations</h3>
         <p>
-          Any inspirations for your visualization(s) (including both design and functionality).
+          <em>Thanks Sophie Engle for code examples.</em></br>
+          <a href="https://www.d3-graph-gallery.com/graph/heatmap_style.html">Heatmap interactive code example</a></br>
+          <a href="https://www.d3-graph-gallery.com/graph/heatmap_basic.html">Basic heatmap code example</a></br>
+          <a href="https://bl.ocks.org/Bl3f/cdb5ad854b376765fa99">Basic heatmap code example 2</a></br>
+          <a href="http://bl.ocks.org/syntagmatic/e8ccca52559796be775553b467593a9f">Continuous Legend</a></br>
+          <a href="https://blog.scottlogic.com/2019/03/13/how-to-create-a-continuous-colour-range-legend-using-d3-and-d3fc.html">How to create a continuous colour range legend using D3 and d3fc</a></br>
+          <a href="https://observablehq.com/collection/@sjengle/interactive-scatterplot">Interactivity examples</a></br>
+        </p>
+        <br/>
+        <h2 id="visualizations">Response process time for each call type barchart</h2>
+      </br>
+        <script type="text/javascript">
+                  d3.csv("data/barchart-b.csv").then(drawBarchart);
+        </script>
+        <svg id="barchart-b" width="960" height="600"></svg>
+        <pre>
+        Barchart represents average of response process time for each Call Type broken down by Call Type Group.
+        Color shows sum of number of incidents by each call type. The Call Type Group filter keeps all not null values.
+        The number of incidents is filtered by ranges from 1,500 to 731,722.
+        Data acquired from "Fire Department Calls for Service" from <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/</a>.</br>
+        <small>Elizaveta Ozerova</small></pre>
+
+
+        <h3 id="encoding">Data Encoding</h3>
+        <p>
+          This data represents points from 2015 onward. The bar chart shows values where the amount of alarms is bigger than 1500. All null values were removed.
+          The data was downloaded from Tableau prototype implementation and can be found <a href="https://github.com/usf-cs360-spring2020/midterm-datasetgo/tree/gh-pages/data/barchart-b.csv">here</a>.
+        </p>
+
+        <h3 id="instructions">Instructions</h3>
+        <p>
+          <p>The interactivity for the bar chart allows us to draw a line for each bar to compare different events and see response time in minutes for each bar. Interactivity example:</p>
+          <img src="prototypes/animation_barchart_d3.gif" width="600" height="600" alt="Interactivity">
+        </p>
+
+        <h3 id="analysis">Analysis</h3>
+        <p>
+          Using the barchart we can learn about response time for each call type in details. We can learn that Structure fire takes 10 minutes in average to process, while other fires take no more than 5 minutes.
+          Using this information we may write some recommendations for training for "Structure fire" calls.
+          We can also learn that Potentially Life-Threatening calls take around 3 minutes, which is more than Outside Fire with 1 minute of processing time.
+          So, we can write recommendations in building a comparative analysis between Outside Fire response process and Potentially Life-Threatening response process. This analysis may show how to improve the timing for more dangerous calls.
+        </p>
+
+        <h3 id="inspiration">Inspirations</h3>
+        <p>
+          <em>Thanks Sophie Engle for code examples.</em></br>
+          <a href="https://bl.ocks.org/d3noob/8952219">Simple d3.js bar chart</a></br>
+          <a href="https://bl.ocks.org/d3noob/bdf28027e0ce70bd132edc64f1dd7ea4">Simple bar graph in v4</a></br>
+          <a href="https://blog.risingstack.com/d3-js-tutorial-bar-charts-with-javascript/">Building Interactive Bar Charts with JavaScript</a></br>
+          <a href="http://bl.ocks.org/syntagmatic/e8ccca52559796be775553b467593a9f">Continuous Legend</a></br>
+          <a href="https://blog.scottlogic.com/2019/03/13/how-to-create-a-continuous-colour-range-legend-using-d3-and-d3fc.html">How to create a continuous colour range legend using D3 and d3fc</a></br>
+          <a href="https://observablehq.com/collection/@sjengle/interactive-scatterplot">Interactivity examples</a></br>
         </p>
       </div>
       <!-- End page content -->

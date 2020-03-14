@@ -1,0 +1,39 @@
+line#limit {
+  stroke: #FED966;
+  stroke-width: 3;
+  stroke-dasharray: 3 6;
+}
+
+text#label {
+  font-family: sans-serif;
+  font-size: 10pt;
+}
+
+#legend {
+  padding: 1.5em 0 0 1.5em;
+}
+
+.legend-text {
+  font-family: sans-serif;
+  font-size: 8pt;
+}
+
+.mainlabel {
+  font-family: sans-serif;
+  font-size: 11pt;
+  text-decoration: underline;
+}
+
+li.key {
+    border-top-width: 15px;
+    border-top-style: solid;
+    font-size: .75em;
+    width: 10%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+line#divider {
+  stroke: gray;
+  stroke-width: 1;
+}
