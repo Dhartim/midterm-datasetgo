@@ -4,10 +4,7 @@ let drawScatterPlot = function(data){
   let zipcode = data.map(a => a.zipcode);
   let priority = data.map(a => a.priority);
   let callType = data.map(a => a.callType);
-  //console.log(callType);
-//  console.log(priority);
-  //console.log(zipcode);
-  //create svg element
+  //console.log();
   let svg = d3.select("body").select(".scatterplot");
   //plots for svg
   let margin = {
@@ -31,11 +28,7 @@ let drawScatterPlot = function(data){
           .domain([0, countMax])
           .range([plotHeight,0])
           .nice();
-  // let radius = d3.scaleSqrt()
-  //               .domain(priority)
-  //               .range([2,5])
-  //               .nice();
-  //console.log(radius);
+
   let plot = svg.append("g").attr("id", "plot");
   plot.attr("transform", translate(2*margin.left, margin.top - margin.right));
   //draw axis
@@ -119,6 +112,26 @@ let drawScatterPlot = function(data){
     cells.on("mouseout.brush1", function(d) {
         cells.transition().style("fill", d => color(d.callType));
     });
+
+    //legends
+    svg.append("text")
+      .attr("class", "text")
+      .attr("x", plotWidth - margin.right - margin.left - margin.top - margin.bottom)
+      .attr("y", margin.top -20)
+      .text("Call Type Group");
+
+    const colorLegendG = svg.append('g')
+            .attr('transform',translate(plotWidth - margin.right - margin.left - margin.top - margin.bottom, margin.top));
+
+    const colorLegend = d3.legendColor()
+          .scale(color)
+          .shape('circle')
+    		  .shapePadding(5);
+    colorLegendG.call(colorLegend);
+
+    colorLegendG.selectAll('text')
+            .attr("class", "text")
+            .attr('font-size', "10")
 
    //label for x-axis
    svg.append("text")
