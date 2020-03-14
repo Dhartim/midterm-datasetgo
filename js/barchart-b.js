@@ -39,7 +39,7 @@ function drawBarchart(data) {
     .padding(0.01);
   svg.append("g")
     .call(d3.axisLeft(y));
-
+    
   let myColor = d3.scaleLinear()
     .range(["#F4D166", "#E4651E", "#9E3A26"])
     .domain([2000, 50000, 732000]);
@@ -65,10 +65,19 @@ function drawBarchart(data) {
 
   let annotations = svg.append("g").attr("id", "annotation");
 
-//create legend
-let legendColor = d3.scaleLinear()
-  .range(["#F4D166", "#9E3A26"])
-  .domain([2000, 732000]);
+  let newdat = data.forEach(function(d) {
+      d.callgroup = d.callgroup;
+      d.calltype = d.calltype;
+  });
+  console.log(newdat);
+
+
+
+
+  //create legend
+  let legendColor = d3.scaleLinear()
+    .range(["#F4D166", "#9E3A26"])
+    .domain([2000, 732000]);
 
   const defs = svg.append("defs");
 
@@ -88,8 +97,8 @@ let legendColor = d3.scaleLinear()
     .append('g')
     .attr("transform", translate(400, margin.top))
     .append("rect")
-    .attr('transform', translate(margin.left-100, 0))
-    .attr("width", width - 2 * margin.right - 2*margin.left + 50)
+    .attr('transform', translate(margin.left - 100, 0))
+    .attr("width", width - 2 * margin.right - 2 * margin.left + 50)
     .attr("height", 10)
     .style("fill", "url(#linear-gradient)");
 
@@ -147,10 +156,37 @@ let legendColor = d3.scaleLinear()
   });
 
 
+  d3.csv("data/barchart-b.csv").then(getGroupedData);
 
   function translate(x, y) {
     return 'translate(' + x + ',' + y + ')';
   }
+}
 
+//function to make tooltip look better
+function getGroupedData(row, index) {
+  let out = {};
+  out.values = []
+  out.values.type = ""
+  out.values.group = 0
 
+  for (let col in row) {
+    switch (col) {
+      case 'callgroup':
+        out['Minutes:\xa0'] = f(parseFloat(row[col]));
+        break;
+      case 'calltype':
+        out['Call Type:\xa0'] = row[col];
+        break;
+      case 'neighborhoood':
+        out['District:\xa0'] = row[col];
+        break;
+      case 'alarms':
+        out['# Incidents:\xa0'] = row[col];
+        break;
+      default:
+        break;
+    }
+  }
+  return out;
 }
