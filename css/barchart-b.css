@@ -26,3 +26,8 @@ li.key {
     padding-left: 0;
     padding-right: 0;
 }
+
+line#divider {
+  stroke: gray;
+  stroke-width: 1;
+}

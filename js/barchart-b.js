@@ -4,7 +4,7 @@ function drawBarchart(data) {
       top: 30,
       right: 30,
       bottom: 30,
-      left: 250
+      left: 300
     },
     width = 960 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
@@ -18,9 +18,14 @@ function drawBarchart(data) {
     .append("g")
     .attr("transform", translate(margin.left, margin.top));
 
-  let myGroups = d3.map(data, function(d) {
-    return d.calltype;
+
+  let myGroup = d3.map(data, function(d) {
+    return d.callgroup + ":" + d.calltype;
   }).keys()
+
+  myGroup.sort();
+  myGroup.reverse();
+
   let myVars = d3.map(data, function(d) {
     return parseFloat(d.minutes);
   }).keys()
@@ -35,11 +40,19 @@ function drawBarchart(data) {
 
   let y = d3.scaleBand()
     .range([height, 0])
-    .domain(myGroups)
+    .domain(myGroup)
     .padding(0.01);
-  svg.append("g")
-    .call(d3.axisLeft(y));
-    
+
+  const yAxis = d3.axisLeft(y)
+    .tickFormat(function(d) {
+      let res = d.split(":");
+      return res[1];
+    });
+
+  svg.append('g')
+    .call(yAxis)
+    .attr('id', 'y-axis')
+
   let myColor = d3.scaleLinear()
     .range(["#F4D166", "#E4651E", "#9E3A26"])
     .domain([2000, 50000, 732000]);
@@ -49,10 +62,11 @@ function drawBarchart(data) {
     .enter()
     .append("g")
 
+
   bars.append("rect")
     .attr("class", "bar")
     .attr("y", function(d) {
-      return y(d.calltype) + 5;
+      return y(d.callgroup + ":" + d.calltype) + 5;
     })
     .attr("height", y.bandwidth() - 10)
     .attr("x", 1.5)
@@ -63,16 +77,9 @@ function drawBarchart(data) {
       return myColor(d.alarms);
     });
 
+
+
   let annotations = svg.append("g").attr("id", "annotation");
-
-  let newdat = data.forEach(function(d) {
-      d.callgroup = d.callgroup;
-      d.calltype = d.calltype;
-  });
-  console.log(newdat);
-
-
-
 
   //create legend
   let legendColor = d3.scaleLinear()
@@ -97,8 +104,8 @@ function drawBarchart(data) {
     .append('g')
     .attr("transform", translate(400, margin.top))
     .append("rect")
-    .attr('transform', translate(margin.left - 100, 0))
-    .attr("width", width - 2 * margin.right - 2 * margin.left + 50)
+    .attr('transform', translate(margin.left - 200, 0))
+    .attr("width", width - 2 * margin.right - 2 * (margin.left-100) + 50)
     .attr("height", 10)
     .style("fill", "url(#linear-gradient)");
 
@@ -123,7 +130,7 @@ function drawBarchart(data) {
 
   //interactivity
   bars.on("mouseover", function(d) {
-    bars.filter(e => (d.calltype !== e.calltype))
+    bars.filter(e => ((d.callgroup + ":" + d.calltype) !== (e.callgroup + ":" + e.calltype)))
       .transition()
       .attr("fill-opacity", "0.2")
 
@@ -133,7 +140,6 @@ function drawBarchart(data) {
       .attr('y1', 0)
       .attr('x2', x(d.minutes))
       .attr('y2', height)
-      .attr('stroke', 'red')
 
     let me = d3.select(this);
     annotations.insert("text")
@@ -155,38 +161,70 @@ function drawBarchart(data) {
       .select("text#label").remove();
   });
 
+  // label to xaxis
+  svg.append("text")
+    .attr("transform", translate(width - 65, height - 10))
+    .style("text-anchor", "middle")
+    .style('fill', 'white')
+    .text("Respose time (minutes)");
 
-  d3.csv("data/barchart-b.csv").then(getGroupedData);
+  // label Alarm to yaxis
+  svg.append("text")
+    .attr("transform", translate(20 - margin.left, 130))
+    .style("text-anchor", "middle")
+    .style('fill', 'white')
+    .text("Alarm");
+
+  svg.append("line")
+    .attr('id', 'divider')
+    .attr("transform", "rotate(-90)")
+    .attr('x1', 0 - height / 2)
+    .attr('y1', -400)
+    .attr('x2', 0 - height / 2)
+    .attr('y2', width)
+    .attr('stroke', 'white')
+
+  // label Fire to yaxis
+  svg.append("text")
+    .attr("transform", translate(20 - margin.left, 330))
+    .style("text-anchor", "middle")
+    .style('fill', 'white')
+    .text("Fire");
+
+  svg.append("line")
+    .attr('id', 'divider')
+    .attr("transform", "rotate(-90)")
+    .attr('x1', 0 - height / 2 - 120)
+    .attr('y1', -400)
+    .attr('x2', 0 - height / 2 - 120)
+    .attr('y2', width)
+    .attr('stroke', 'white')
+
+  // label Non Life-threatening to yaxis
+  svg.append("text")
+    .attr("transform", translate(70 - margin.left, 430))
+    .style("text-anchor", "middle")
+    .style('fill', 'white')
+    .text("Non Life-Threatening");
+
+  svg.append("line")
+    .attr('id', 'divider')
+    .attr("transform", "rotate(-90)")
+    .attr('x1', 0 - height / 2 - 210)
+    .attr('y1', -400)
+    .attr('x2', 0 - height / 2 - 210)
+    .attr('y2', width)
+    .attr('stroke', 'white')
+
+  // label Potentially Life-Threatening to yaxis
+  svg.append("text")
+    .attr("transform", translate(90 - margin.left, 515))
+    .style("text-anchor", "middle")
+    .style('fill', 'white')
+    .text("Potentially Life-Threatening");
+
 
   function translate(x, y) {
     return 'translate(' + x + ',' + y + ')';
   }
-}
-
-//function to make tooltip look better
-function getGroupedData(row, index) {
-  let out = {};
-  out.values = []
-  out.values.type = ""
-  out.values.group = 0
-
-  for (let col in row) {
-    switch (col) {
-      case 'callgroup':
-        out['Minutes:\xa0'] = f(parseFloat(row[col]));
-        break;
-      case 'calltype':
-        out['Call Type:\xa0'] = row[col];
-        break;
-      case 'neighborhoood':
-        out['District:\xa0'] = row[col];
-        break;
-      case 'alarms':
-        out['# Incidents:\xa0'] = row[col];
-        break;
-      default:
-        break;
-    }
-  }
-  return out;
 }
