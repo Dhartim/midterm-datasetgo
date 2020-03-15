@@ -30,7 +30,7 @@ let drawScatterPlot = function(data){
           .nice();
 
   let plot = svg.append("g").attr("id", "plot");
-  plot.attr("transform", translate(2*margin.left, margin.top - margin.right));
+  plot.attr("transform", translate(2*margin.left, margin.top - margin.right - 10));
   //draw axis
   let xAxis = d3.axisBottom(zipcodeX);
   let yAxis = d3.axisLeft(stationAreaY);
@@ -52,7 +52,7 @@ let drawScatterPlot = function(data){
    yGroup.call(yAxis);
 
    let color = d3.scaleOrdinal()
-                 .range(d3.schemeCategory10);
+                 .range(["#fab520", " #e42308", "#f87614", "#5f160e"]);
 
   const allcircles = svg.append("g").attr("id", "all-circles");
    //create buubbles
@@ -63,7 +63,7 @@ let drawScatterPlot = function(data){
    .attr('cx', function(d){return zipcodeX(d.zipcode);})
    .attr('cy', function(d){ return stationAreaY(d.stationArea); })
    .attr('r', d => d.priority*3)
-   .attr("transform", translate(2*margin.left + margin.right, margin.top - margin.right))
+   .attr("transform", translate(2*margin.left + margin.right, margin.top - margin.right-10))
    .style('fill', d => color(d.callType));
 
    //interactivity in chart
@@ -73,7 +73,7 @@ let drawScatterPlot = function(data){
    cells.on("mouseover.hover", function(data){
      d3.select(this)
      .raise()
-     .style("stroke", "red")
+     .style("stroke", "white")
      .style("stroke-width", 1);
 
      let div = d3.select("body").append("div");
@@ -88,7 +88,7 @@ let drawScatterPlot = function(data){
         .append("tr");
 
       rows.append("th").text(key => key)
-          .style("color", "black");
+          .style("color", "white");
       rows.append("td").text(key => "\xa0" + data[key]);
    });
 
@@ -97,7 +97,7 @@ let drawScatterPlot = function(data){
     // get height of tooltip
     let bbox = div.node().getBoundingClientRect();
     div.style("left", d3.event.clientX + "px")
-    div.style("top", d3.event.clientY + (7*bbox.height) + "px");
+    div.style("top", d3.event.clientY +(2*bbox.height) + "px");
   });
 
    cells.on("mouseout.hover", function(d) {
@@ -106,7 +106,7 @@ let drawScatterPlot = function(data){
     });
 
     cells.on("mouseover.brush1", function(d) {
-        cells.filter(e => (d.callType !== e.callType)).transition().style("fill", "#bbbbbb");
+        cells.filter(e => (d.callType !== e.callType)).transition().style("fill", "#1f2d3b");
       });
 
     cells.on("mouseout.brush1", function(d) {
@@ -128,10 +128,36 @@ let drawScatterPlot = function(data){
           .shape('circle')
     		  .shapePadding(5);
     colorLegendG.call(colorLegend);
-
     colorLegendG.selectAll('text')
             .attr("class", "text")
             .attr('font-size', "10")
+  //priority legends
+  svg.append("text")
+    .style("fill", "white")
+    .attr("class", "text")
+    .attr("x", plotWidth - 2*margin.left - 2*margin.right - 2*margin.top)
+    .attr("y", margin.top -20)
+    .text("Priority");
+
+
+  var linearSize = d3.scaleLinear().domain([1,3]).range(["5","10","15"]);
+
+    svg.append("g")
+      .attr("class", "legendSize")
+      .attr("transform", translate(plotWidth - 2*margin.left - 2*margin.right - 2*margin.top, margin.top));
+
+    var legendSize = d3.legendSize()
+      .scale(linearSize)
+      .shape('circle')
+      .shapePadding(5)
+      .labels(["1", "2", "3"])
+      .labelOffset(15)
+      .cells(3)
+      .orient('horizontal');
+
+    svg.select(".legendSize")
+      .attr("class", "text")
+      .call(legendSize);
 
    //label for x-axis
    svg.append("text")

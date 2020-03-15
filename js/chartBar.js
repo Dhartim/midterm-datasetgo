@@ -77,7 +77,7 @@ let drawBarChart = function(data)
   let color = d3.scaleOrdinal()
     .domain(series.map(d => d.key).reverse())
     // .range(d3.schemeSpectral[series.length])
-    .range(d3.schemeTableau10)
+    .range(["#fab520", "#f87614","#f6530f", "#b0180a" ,"#5f160e", "#120b08"])
     .unknown("#ccc");
 
   let bars = plot.selectAll("rect")
@@ -123,6 +123,7 @@ let drawBarChart = function(data)
 
   //legends
     svg.append("text")
+      .attr("class", "text")
       .attr("x", plotWidth - margin.right)
       .attr("y", margin.top)
       .text("Years");
@@ -158,12 +159,13 @@ let drawBarChart = function(data)
 
     // Add one dot in the legend for each name.
     svg.selectAll("mylabels")
-      .data(series.map(d => d.key))
+      .data(series.reverse().map(d => d.key))
       .enter()
       .append("text")
+
         .attr("x", plotWidth - margin.right + 15*1.2)
         .attr("y", function(d,i){ return margin.top +12 + i*(15+5) + (15/2)}) // 100 is where the first dot appears. 25 is the distance between dots
-        .style("fill", "black")
+        .style("fill", "white")
         .text(function(d){ return d})
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")

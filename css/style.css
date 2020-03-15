@@ -13,16 +13,18 @@ img, table {
   font-family: Roboto;
   width: 950px;
   height: 490px;
-  background-color: white;
-  border: 1px solid gainsboro;
-  border-radius: 10px;
+
+  /* background-color: white; */
+  /* border: 1px solid gainsboro; */
+  /* border-radius: 10px; */
 
 }
 .x-axis-label,
 .y-axis-label
 {
   font-size: 8pt;
-  fill: #88888;
+  font-family: Roboto;
+  fill: white;
   font-weight: bolder;
 }
 
@@ -30,10 +32,10 @@ img, table {
 .text,
 #y-axis text {
   font-family: Roboto;
-  font-size: 8pt;
-  fill: #88888;
+  font-size: 9pt;
+  fill: white;
   font-weight: 200;
-  color: black;
+  color: white;
 }
 
 .tooltip {
@@ -41,11 +43,8 @@ img, table {
   width: auto;
   height: auto;
   padding: 8px;
-  background: #ddd;
   pointer-events: none;
-  border: 1px solid #eee;
-  border-radius: 10px;
   font-family: Roboto;
   font-size: 10pt;
-  color: black;
+  color: white;
 }
