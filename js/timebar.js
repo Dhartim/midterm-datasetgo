@@ -34,7 +34,7 @@ function timeBarChart(data) {
 
   let series;
 
-  function draw(data) {
+  function draw(data, animate) {
     console.log(data);
     series = dataWrangling(data);
     console.log(series[0]);
@@ -61,7 +61,7 @@ function timeBarChart(data) {
 
     console.log(series);
 
-    plot.selectAll("g#bars")
+    let bars = plot.selectAll("g#bars")
       .data(series)
       .join("g")
         .attr("fill", d => color(d.key))
@@ -70,15 +70,60 @@ function timeBarChart(data) {
       .join("rect")
         .attr("x", d => x(d[0]))
         .attr("y", (d, i) => y(d.data.Zipcode))
-        .attr("width", d => x(d[1]) - x(d[0]))
         .attr("height", y.bandwidth())
-        .attr("class", "bar")
-      .append("title")
-        .text(d => `
-  Zipcode: ${d.data.Zipcode}
-  ${d.key}: ${formatValue(d.data[d.key])} minutes
-  Total: ${d3.format('.3f')(d.data.Total)} minutes
-  Count: ${d.data.Count}`);
+        .attr("width", d => x(d[1]) - x(d[0]))
+        .attr("class", "bar");
+
+    if (animate) {
+        bars.attr("width", 0)
+          .attr("x", d => x(0))
+            .transition()
+            .duration(400)
+            .delay(100)
+          .attr("width", d => x(d[1]) - x(d[0]))
+          .attr("x", d => x(d[0]));
+    }
+
+    plot.selectAll("rect")
+      .on("mouseover", tooltip)
+      .on("mousemove", tooltipMove)
+      .on("mouseout", tooltipLeave);
+
+    function tooltip(d) {
+      let me = d3.select(this);
+      let div = d3.select("body").append("div");
+
+      div.attr("id", "details");
+      div.attr("class", "tooltip");
+
+      let rows = div.append("table")
+        .selectAll("tr")
+        .data(["Time: ", "Time: ", "Time: ", "Time: "])
+        .enter()
+        .append("tr");
+
+      rows.append("th").text(key => key);
+      rows.append("td").text(key => "Yeet");
+
+      // plot.selectAll("rect").filter(e => (d.key !== e.key)).transition().duration(100).style("fill", "#bbbbbb");
+    }
+
+    function tooltipMove(d) {
+      let div = d3.select("div#details");
+
+      // get height of tooltip
+      let bbox = div.node().getBoundingClientRect();
+
+      // https://stackoverflow.com/questions/4666367/how-do-i-position-a-div-relative-to-the-mouse-pointer-using-jquery
+      div.style("left", d3.event.pageX + "px")
+      div.style("top",  (d3.event.pageY - bbox.height) + "px");
+    }
+
+    function tooltipLeave(d) {
+      d3.selectAll("div#details").remove();
+
+      // plot.selectAll("rect").transition().style("fill", d => color(d.key));
+    }
 
     // Type will be used as color so we will not make an axis for it
     // dimensions = d3.keys(data[0]).filter(d => d != "Type");
@@ -213,9 +258,7 @@ function timeBarChart(data) {
     //     .on("mouseleave", d => {doNotHighlight({Type: d})});
   }
 
-  function updateSelection(selection) {
-    console.log(selection);
-    console.log(selection[0].getTime() == selection[1].getTime());
+  function updateSelection(selection, animate) {
     if (selection == null || selection.length == 0 || selection[0].getTime() === selection[1].getTime()) {
       var newData = data;
     } else {
@@ -227,10 +270,10 @@ function timeBarChart(data) {
     }
     console.log(newData);
     plot.selectAll("rect.bar").remove();
-    draw(newData);
+    draw(newData, animate);
   }
 
-  draw(data);
+  draw(data, true);
 
   return updateSelection;
 }

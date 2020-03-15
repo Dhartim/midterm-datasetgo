@@ -62,19 +62,20 @@ function timeAreaChart(data, update) {
 
     let brush = d3.brushX()
       .extent([[pad.left, pad.top], [size.width - pad.right, size.height - pad.bottom]])
-      .on("start brush end", brushmove);
+      .on("end", brushend);
 
     plot.append("g")
       .attr("id", "brush")
       .call(brush);
 
-    // https://observablehq.com/@d3/brush-snapping-transitions
-    function brushmove() {
+    function brushend() {
       let selection = d3.event.selection;
-      console.log(selection);
+      if (selection == null) {
+        update(null, true);
+      }
       if (!d3.event.sourceEvent || !selection) return;
 
-      update(selection.map(d => x.invert(d)));
+      update(selection.map(d => x.invert(d)), true);
     }
 
     // // since our g elements are already in the proper order, we can draw our svg
