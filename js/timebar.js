@@ -103,9 +103,9 @@ function timeBarChart(data) {
         .append("tr");
 
       rows.append("th").text(key => key);
-      rows.append("td").text(key => "Yeet");
+      rows.append("td").text(key => d[key]);
 
-      // plot.selectAll("rect").filter(e => (d.key !== e.key)).transition().duration(100).style("fill", "#bbbbbb");
+      plot.selectAll("rect").filter(e => (d.key !== e.key)).transition().duration(100).style("fill", "#bbbbbb");
     }
 
     function tooltipMove(d) {
@@ -122,7 +122,7 @@ function timeBarChart(data) {
     function tooltipLeave(d) {
       d3.selectAll("div#details").remove();
 
-      // plot.selectAll("rect").transition().style("fill", d => color(d.key));
+      plot.selectAll("rect").transition().style("fill", d => color(d.key));
     }
 
     // Type will be used as color so we will not make an axis for it
