@@ -1,6 +1,6 @@
-function timeBarChart(data) {
+function timeAreaChart(data, update) {
   // setup svg
-  const svg = d3.select('body').select('svg#timebar');
+  const svg = d3.select('body').select('svg#timearea');
 
   // get current hard-coded size of svg
   const size = {
@@ -12,88 +12,71 @@ function timeBarChart(data) {
   const pad = {top: 15, right: 15, bottom: 25, left: 50};
 
   // setup plot area
-  const plot = svg.select('g#plot');
+  const plot = svg.select('g#areaplot');
 
   // setup plot width and height
   const width = size.width - pad.left - pad.right;
   const height = size.height - pad.top - pad.bottom;
 
-  const x = d3.scaleLinear()
+  const x = d3.scaleTime()
     .range([pad.left, size.width - pad.right])
-    .nice()
 
-  const y = d3.scaleBand()
-    .range([pad.top, size.height - pad.bottom])
-    .padding(0.08)
+  const y = d3.scaleLinear()
+    .range([height + pad.top, pad.top])
+    .nice();
 
-  const color = d3.scaleOrdinal()
-    // .range(d3.schemeTableau10);
-    .range(d3.schemeYlOrRd[5].reverse());
-
-  var formatValue = x => isNaN(x) ? "N/A" : x.toLocaleString("en");
-
-  let series;
+  var formatValue = x => isNaN(x) ? "N/A" : x.toLocaleString("en")
 
   function draw(data) {
-    console.log(data);
-    series = dataWrangling(data);
-    console.log(series[0]);
-    x.domain([0, d3.max(series, d => d3.max(d, d => d[1]))]);
-    y.domain(series[0].map(d => d.data.Zipcode));
-
-    color.domain(series.map(d => d.key));
+    let series = dataWrangling(data);
+    console.log(series);
+    console.log(d3.extent(series, d => new Date(d.key)));
+    x.domain(d3.extent(series, d => new Date(d.key)));
+    y.domain([0, d3.max(series, d => d.value)]);
 
     xAxis = g => g
       .attr("transform", `translate(0,${size.height - pad.bottom})`)
-      .call(d3.axisBottom(x).ticks(width / 30, "s").tickSizeOuter(0))
+      .call(d3.axisBottom(x).ticks(width / 30).tickSizeOuter(0))
       .call(g => g.selectAll(".domain"))
 
     yAxis = g => g
       .attr("transform", `translate(${pad.left},0)`)
-      .call(d3.axisLeft(y).tickSizeOuter(0))
+      .call(d3.axisLeft(y).ticks(width / 350, "s").tickSizeOuter(0))
       .call(g => g.selectAll(".domain"))
 
-    svg.select('g#x')
+    svg.select('g#areax')
       .call(xAxis);
 
-    svg.select('g#y')
+    svg.select('g#areay')
       .call(yAxis);
 
-    console.log(series);
+    let area = d3.area().curve(d3.curveLinear)
+      .x(d => x(new Date(d.key)))
+      .y0(y(0))
+      .y1(d => y(d.value));
 
-    plot.selectAll("g#bars")
-      .data(series)
-      .join("g")
-        .attr("fill", d => color(d.key))
-      .selectAll("rect")
-      .data(d => d)
-      .join("rect")
-        .attr("x", d => x(d[0]))
-        .attr("y", (d, i) => y(d.data.Zipcode))
-        .attr("width", d => x(d[1]) - x(d[0]))
-        .attr("height", y.bandwidth())
-        .attr("class", "bar")
-      .append("title")
-        .text(d => `
-  Zipcode: ${d.data.Zipcode}
-  ${d.key}: ${formatValue(d.data[d.key])} minutes
-  Total: ${d3.format('.3f')(d.data.Total)} minutes
-  Count: ${d.data.Count}`);
+    plot.select("g#area").append("path")
+      .datum(series)
+      .attr("fill", "#fecc5c")
+      .attr("d", area);
 
-    // Type will be used as color so we will not make an axis for it
-    // dimensions = d3.keys(data[0]).filter(d => d != "Type");
-    //
-    // for (dim in dimensions) {
-    //   let name = dimensions[dim];
-    //   y[name] = d3.scaleLinear()
-    //     .domain(d3.extent(data, d => d[name]))
-    //     .range([height, 0]);
-    // }
-    //
-    // x.domain(dimensions);
-    //
-    // color.domain(data.map(d => d['Type']));
-    //
+    let brush = d3.brushX()
+      .extent([[pad.left, pad.top], [size.width - pad.right, size.height - pad.bottom]])
+      .on("start brush end", brushmove);
+
+    plot.append("g")
+      .attr("id", "brush")
+      .call(brush);
+
+    // https://observablehq.com/@d3/brush-snapping-transitions
+    function brushmove() {
+      let selection = d3.event.selection;
+      console.log(selection);
+      if (!d3.event.sourceEvent || !selection) return;
+
+      update(selection.map(d => x.invert(d)));
+    }
+
     // // since our g elements are already in the proper order, we can draw our svg
     // // elements in any order we want
     // drawLines(data);
@@ -103,29 +86,19 @@ function timeBarChart(data) {
 
   function dataWrangling(data) {
     let data2 = d3.nest()
-      .key(d => d['Zipcode of Incident'])
+      .key(d => d['Call Date'])
       .rollup(function(v) {
-        let temp = {};
-        temp['Zipcode'] = v[0]['Zipcode of Incident'];
         let total = 0;
         let count = 0;
         for (col of ['Received to Entry', 'Entry to Dispatch', 'Dispatch to Response', 'Response to On Scene']) {
-          temp['Avg. ' + col] = d3.sum(v, d => d[col + ' sum']) / d3.sum(v, d => d[col + ' count']);
-          total += temp['Avg. ' + col];
+          total += d3.sum(v, d => d[col + ' sum']);
           count += d3.sum(v, d => d[col + ' count']);
         }
-        temp['Total'] = total;
-        temp['Count'] = count;
-        return temp;
+        return total / count;
       })
-      .object(data);
-    data2 = Object.values(data2);
-    data2['columns'] = ['Zipcode'].concat(['Received to Entry', 'Entry to Dispatch', 'Dispatch to Response', 'Response to On Scene'].map(col => 'Avg. ' + col));
-    data2 = data2.sort((a, b) => b['Total'] - a['Total'])
-    let stack = d3.stack()
-      .keys(data2.columns.slice(1))(data2)
-      .map(d => (d.forEach(v => v.key = d.key), d));
-    return stack;
+      .entries(data);
+    console.log(data2);
+    return data2;
   }
 
   /**
@@ -213,24 +186,5 @@ function timeBarChart(data) {
     //     .on("mouseleave", d => {doNotHighlight({Type: d})});
   }
 
-  function updateSelection(selection) {
-    console.log(selection);
-    console.log(selection[0].getTime() == selection[1].getTime());
-    if (selection == null || selection.length == 0 || selection[0].getTime() === selection[1].getTime()) {
-      var newData = data;
-    } else {
-      var newData = data.filter(function(d) {
-        // console.log(new Date(d["Call Date"]), new Date(selection[0]), new Date(d["Call Date"]), new Date(selection[1]));
-        return new Date(d["Call Date"]) >= new Date(selection[0])
-          && new Date(d["Call Date"]) <= new Date(selection[1]);
-      });
-    }
-    console.log(newData);
-    plot.selectAll("rect.bar").remove();
-    draw(newData);
-  }
-
   draw(data);
-
-  return updateSelection;
 }
