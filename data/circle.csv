@@ -1,0 +1,109 @@
+Call Type Group,Zipcode of Incident,Priority,Number of Alarms,Station Area
+Potentially Life-Threatening,94158,2,5362,34464
+Potentially Life-Threatening,94134,2,20745,889236
+Potentially Life-Threatening,94133,3,26095,500306
+Potentially Life-Threatening,94132,2,15133,358522
+Potentially Life-Threatening,94131,2,11138,254670
+Potentially Life-Threatening,94130,2,4805,210646
+Potentially Life-Threatening,94129,2,1824,84029
+Potentially Life-Threatening,94127,2,6317,203898
+Potentially Life-Threatening,94124,2,38927,865535
+Potentially Life-Threatening,94123,2,12321,226566
+Potentially Life-Threatening,94122,2,25478,562049
+Potentially Life-Threatening,94121,2,17674,433689
+Potentially Life-Threatening,94118,3,19290,469569
+Potentially Life-Threatening,94117,2,24623,394156
+Potentially Life-Threatening,94116,2,15541,459892
+Potentially Life-Threatening,94115,2,29520,413926
+Potentially Life-Threatening,94114,2,23231,204651
+Potentially Life-Threatening,94112,2,36191,1114417
+Potentially Life-Threatening,94111,2,11901,172154
+Potentially Life-Threatening,94110,2,62922,767338
+Potentially Life-Threatening,94109,3,67650,1057056
+Potentially Life-Threatening,94108,3,15123,199204
+Potentially Life-Threatening,94107,2,31352,469329
+Potentially Life-Threatening,94105,2,18625,467971
+Potentially Life-Threatening,94104,2,5144,61680
+Potentially Life-Threatening,94103,3,113653,1567918
+Potentially Life-Threatening,94102,3,114714,1167245
+Non Life-threatening,94158,2,3236,21492
+Non Life-threatening,94134,2,10597,452642
+Non Life-threatening,94133,2,13045,246746
+Non Life-threatening,94132,2,10048,240034
+Non Life-threatening,94131,2,6601,152989
+Non Life-threatening,94130,2,3450,149859
+Non Life-threatening,94129,2,1470,68294
+Non Life-threatening,94127,2,3792,125969
+Non Life-threatening,94124,2,18355,429260
+Non Life-threatening,94123,2,6705,125715
+Non Life-threatening,94122,2,13347,295680
+Non Life-threatening,94121,2,9415,227085
+Non Life-threatening,94118,3,11423,273347
+Non Life-threatening,94117,2,12270,198512
+Non Life-threatening,94116,2,8220,237982
+Non Life-threatening,94115,2,14773,200141
+Non Life-threatening,94114,2,12320,108722
+Non Life-threatening,94112,2,17971,538579
+Non Life-threatening,94111,2,6402,95435
+Non Life-threatening,94110,2,31808,392732
+Non Life-threatening,94109,3,32943,539230
+Non Life-threatening,94108,2,7482,104177
+Non Life-threatening,94107,3,15830,233476
+Non Life-threatening,94105,3,9754,259086
+Non Life-threatening,94104,2,2626,31361
+Non Life-threatening,94103,3,53244,757452
+Non Life-threatening,94102,3,51476,515886
+Fire,94158,1,469,3281
+Fire,94134,2,1779,72497
+Fire,94133,1,2173,44235
+Fire,94132,1,2153,44073
+Fire,94131,2,946,20459
+Fire,94130,2,1286,53200
+Fire,94129,1,2519,117743
+Fire,94127,1,530,13178
+Fire,94124,2,5513,114579
+Fire,94123,2,1417,30315
+Fire,94122,2,2855,58610
+Fire,94121,1,2801,74643
+Fire,94118,1,1765,36440
+Fire,94117,2,1762,23101
+Fire,94116,1,992,25270
+Fire,94115,2,1407,20454
+Fire,94114,2,1921,16151
+Fire,94112,2,2430,65367
+Fire,94111,2,1614,29227
+Fire,94110,2,5508,63941
+Fire,94109,1,2627,50363
+Fire,94108,1,1053,21961
+Fire,94107,1,2949,70551
+Fire,94105,1,1192,33841
+Fire,94104,1,286,3752
+Fire,94103,2,3898,60237
+Fire,94102,2,2522,43421
+Alarm,94158,2,4124,23998
+Alarm,94134,2,7703,329159
+Alarm,94133,2,14738,274106
+Alarm,94132,2,10750,254296
+Alarm,94131,2,8937,199185
+Alarm,94130,2,1749,80935
+Alarm,94129,2,2048,97257
+Alarm,94127,2,4559,143405
+Alarm,94124,2,15322,336944
+Alarm,94123,2,12195,236451
+Alarm,94122,2,11709,249731
+Alarm,94121,2,10158,232958
+Alarm,94118,3,12679,284939
+Alarm,94117,2,13581,204739
+Alarm,94116,2,7201,205259
+Alarm,94115,2,18841,304632
+Alarm,94114,2,12746,137935
+Alarm,94112,2,13728,406849
+Alarm,94111,2,9057,144070
+Alarm,94110,2,24742,326366
+Alarm,94109,2,33947,716923
+Alarm,94108,2,12650,161480
+Alarm,94107,2,16551,303056
+Alarm,94105,2,11598,265841
+Alarm,94104,2,3681,53034
+Alarm,94103,2,37126,510051
+Alarm,94102,2,39446,437360

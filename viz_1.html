@@ -12,6 +12,19 @@
 
   <!-- Load Font Awesome 5 (free) icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <!-- include d3.js v5 -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- include d3.js modules -->
+  <script src="https://d3js.org/d3-array.v2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+
+  <!-- <script src="countDataviz1.js" charset="utf-8"></script>
+  <script src="chartviz1.js"></script> -->
+  <script src="js/countDataScatter.js"></script>
+  <script src="js/scatterPlot.js"></script>
+  <script src="js/countDataBar.js"></script>
+  <script src="js/chartBar.js"></script>
   <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -101,40 +114,101 @@
     </div>
   </nav>
   <!-- End page navigation -->
-
-
   <section class="section">
     <div class="container">
       <!-- Begin page content -->
       <div class="content">
         <h1 class="title"> Visualizations </h1>
 
-        <h3 id="vizualization">D3 Visualization</h3>
-        <p>
-          A multi-component interactive visualization using D3.js version 5 (using older versions will not receive full credit).
-          See the Visualizations section for details.
+        <h3 id="vizualization">Station Area over Different Zipcode encoded with Priority and Call Type </h3>
+        <svg class="scatterplot"></svg>
+        <script type="text/javascript">
+          d3.csv("data/circle.csv", convertRow).then(drawScatterPlot);
+        </script>
+        <pre>
+          Total Station Area for each Zipcode of Incident with diffferent priority and Call Type. Color shows different types of Call Type Groups.
+          Size of circles shows different Priority, where 3 is "Emergency".
+          Null Data is removed from Call Type group and zipcode.
+          Data acquired from "Fire Department Calls for Service" from <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/</a>
+          <small>Dharti Madeka</small></pre>
+
         </p>
 
         <h3 id="encoding">Data Encoding</h3>
         <p>
-          The data encoding and how to interpret your visualization(s).
+          For this visualization, Call Type group was color encoded and filtered to remove null values. Priority was filtered to get distinct count.
+          Total Number of Station Area over different zipcode is interpretated. More filtered dataset was exported from Tableau.
         </p>
 
         <h3 id="instructions">Instructions</h3>
         <p>
-          Instructions on how to interact with your visualization(s).
+          For this visualization, Brushing and Details on demand interactivity is implemented.
+          When mouser over on each scatter plot than it is highlights it's own call Type and shows details in tool tip.
+          Here is gif of it.
         </p>
+        <img src="prototypes/visualization1.gif" width="500px" height="500px">
 
         <h3 id="analysis">Analysis</h3>
         <p>
-          One or two findings that can be learned from your visualization(s)
-          and how that supports the theme of the group project.
+          From this visualization, it is interpretated that there are more "Potentially life threatening" calss rather than "Fire". It also seen that there irrespective of type of call. There are more Station Area in
+          area of zipcode "94103 and 94102".  According to Google Maps, it is in Tenderloin Area and Downtown. From this analysis, we came to know that number of Alarms and number of Station area are proportionally related.
+          In future if there is more number of alarms for any call type group than demand for Station Area will increase.
         </p>
 
         <h3 id="inspiration">Inspirations</h3>
         <p>
-          Any inspirations for your visualization(s) (including both design and functionality).
+          <em>Thanks Sophie Engle for code examples.</em></br>
+          <a href="https://observablehq.com/collection/@sjengle/interactive-scatterplot">Interactivity examples</a></br>
+          <a href="https://d3-legend.susielu.com/#size-line"> Color Legend and Size Legend</a>
         </p>
+        <h3 id="vizualization">Top 10 Neighborhoods with highest number of Alarms in different years </h3>
+        <svg class="barchart">
+        </svg>
+        <script type="text/javascript">
+        d3.csv('data/barchartDate.csv')
+        .then(function(data) {
+     data.forEach(function(d) {
+       d['Number of Alarms'] = +d['Number of Alarms'];
+     });
+     drawBarChart(data);
+ });
+    </script>
+      <pre>
+        Number of Alarms for each Neighborhoods.  Color shows details about Call Date Year. The view is filtered on Neighborhoods and Call Date by Year.
+        Null Data is removed.
+        Data acquired from "Fire Department Calls for Service" https://data.sfgov.org/
+        <small>Dharti Madeka</small></pre>
+      </p>
+
+      <h3 id="encoding">Data Encoding</h3>
+      <p>
+        For this visualization, Call Date was color encoded and filtered by Year.
+        Total Number of Alarms over different Neighborhoods is interpretated.
+        Neighborhoods is filtered out by keeping top 10 based on highest amount of Alarms.
+      </p>
+
+      <h3 id="instructions">Instructions</h3>
+      <p>
+        For this visualization, Brushing, responsive Legend and Details on demand interactivity is implemented.
+        When mouser over on each bar than it is highlights it's own Year and shows details in tool tip.
+        Also when clicked on each color in legend than it is highlighted.
+        Here is gif of it.
+      </p>
+      <img src="prototypes/visualization1-1.gif" width="500px" height="500px">
+      <h3 id="analysis">Analysis</h3>
+      <p>
+        From this visualization, it is concluded that Tenderloin get's highest number of alarms in every year. Irrespective of what Call Type is, there is highest amount of Alarms
+        in Tenderloin, Market and Mission.
+      </p>
+
+      <h3 id="inspiration">Inspirations</h3>
+      <p>
+        <em>Thanks Sophie Engle for code examples.</em></br>
+        <a href="https://observablehq.com/collection/@sjengle/interactive-scatterplot">Interactivity examples</a></br>
+        <a href="https://d3-legend.susielu.com/#size-line"> Color Legend</a><br/>
+        <a href="https://observablehq.com/@d3/stacked-bar-chart">Stacked Bar chart</a><br/>
+        <a href="http://bl.ocks.org/Ctuauden/52d057254665400f561ef73cb6e5841a">Responsive legend</a>
+      </p>
       </div>
       <!-- End page content -->
     </div>

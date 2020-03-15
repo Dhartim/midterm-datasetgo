@@ -128,13 +128,7 @@
         </a>
         <h5>Prototype 1</h5>
         <img src="prototypes/alarmNeighbour.png" width="960" height="500" />
-        <h5>Prototype 2 </h5>
-        <img src="prototypes/prototype-1 option.png" width="960" height="500" />
-        <h5>Prototype 3</h5>
-        <img src="prototypes/prototype-3.png" width="960" height="500" />
-
         <h3 id="analysis">Theme Analysis</h3>
-        <h5>Prototype 1</h5>
         <p>
           This prototype tells you about the number of alarms in different areas
           of San Francisco. It shows that the highest number of calls are coming
@@ -142,26 +136,7 @@
           Many of these calls are for life threatening incidents. The least
           amount of calls received are from Presidio and Treasure Island.
         </p>
-
-        <h5>Prototype 2</h5>
-        <p>
-          This prototype is an alternative for prototype 1. It shows Top 10
-          Neighborhoods in SF with respect to Number of alarms which are color
-          encoded over priority. It shows that Tenderloin has highest Number of
-          alarm of Priority 3 which is for Emergency.
-        </p>
-
-        <h5>Prototype 3</h5>
-        <p>
-          This prototype shows different alarms encoded over color and
-          prioritized over size (where 3 is Emergency). It shows Station Area
-          over different zip codes. It shows that 94110 has highest station area
-          but least Priority. It relates with first prototype which shows
-          different Neighborhoods of SF.
-        </p>
-
         <h3 id="interactivity">Planned Interactivity</h3>
-        <h5>Prototype 1 and Prototype 3</h5>
         <p>
           The final visualization will have an animation that shows details in
           tooltip and highlights the graph with respect to color class priority.
@@ -172,21 +147,95 @@
         <p>From: <a
             href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html">https://archive.nytimes.com/www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html</a>
         </p>
+        <h3 id="feedback">Peer Feedback</h3>
+        <style>
+          table.grades tbody tr td:nth-child(1),
+          table.grades tbody tr td:nth-child(2) {
+            text-align: center;
+          }
+        </style>
 
-        <h5>Prototype 2</h5>
+        <!-- https://bulma.io/documentation/elements/table/ -->
+        <table class="table is-hoverable is-bordered grades">
+          <thead>
+            <tr class="is-selected">
+              <th>
+                <center>Suggestions</center>
+              </th>
+              <th>
+                <center>Improvements</center>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Remove too many priority and keep it more self explanatory.</td>
+              <td>Reduced priority and encoded it with size.</td>
+            </tr>
+            <tr>
+              <td>Not sure if it is scatter plot or bar chart.</td>
+              <td>Changed to bar chart.</td>
+            </tr>
+            <tr>
+              <td>Change priority in color encoding to something else.</td>
+              <td>Changed to Call Date filtered by Years.</td>
+            </tr>
+            <tr>
+              <td>Changing orientation may help to show more data better.</td>
+              <td>Orientation was changed, x and y switched.</td>
+            </tr>
+            <tr>
+              <td>Sorting.</td>
+              <td>Based on highest number of alarms.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h5>Prototype 2 </h5>
+        <img src="prototypes/prototype-1 option.png" width="960" height="500" />
+        <h3 id="analysis">Theme Analysis</h3>
         <p>
-          The final visualization will have following interactivity that can
-          animate sorting the bars for increases in number of alarms from 2015 to
-          2020 for different Neighborhoods of SF.
+          This prototype is an alternative for prototype 1. It shows Top 10
+          Neighborhoods in SF with respect to Number of alarms which are color
+          encoded over priority. It shows that Tenderloin has highest Number of
+          alarm of Priority 3 which is for Emergency.
         </p>
-        <img src="prototypes/animation4.gif" width="400px" height="600px">
+        <h3 id="interactivity">Planned Interactivity</h3>
+        <p>
+          The final visualization will have following interactivity that will animate highlighting a bar amd showing detail on demand on tooltip.
+        </p>
+        <img src="prototypes/animation3.gif" width="400px" height="600px">
         <p>From: <a href="https://observablehq.com/@d3/bar-chart-race-explained">https://observablehq.com/@d3/bar-chart-race-explained</a></p>
-
         <h3 id="feedback">Peer Feedback</h3>
         <p>
-          The peer feedback you received and how this impacted the final version of your visualizations.
+          No Feedback provided for this chart
         </p>
-      </div>
+        <h5>Prototype 3</h5>
+        <img src="prototypes/prototype-3.png" width="960" height="500" />
+        <h3 id="analysis">Theme Analysis</h3>
+        <p>
+          This prototype shows different alarms encoded over color and
+          prioritized over size (where 3 is Emergency). It shows Station Area
+          over different zip codes. It shows that 94110 has highest station area
+          but least Priority. It relates with first prototype which shows
+          different Neighborhoods of SF.
+        </p>
+
+        <h3 id="interactivity">Planned Interactivity</h3>
+        <p>
+          The final visualization will have an animation that shows details in
+          tooltip and highlights the graph with respect to color class priority.
+          It might also show maximum calls and call type. This is similar kind
+          of interactivity planned to use.
+        </p>
+        <img src="prototypes/animation2.gif" width="400px" height="500px">
+        <p>From: <a
+            href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html">https://archive.nytimes.com/www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html</a>
+        </p>
+        <h3 id="feedback">Peer Feedback</h3>
+        <p>
+          This chart is preferred over prototype 1 .
+        </p>
+        </div>
       <!-- End page content -->
     </div>
   </section>

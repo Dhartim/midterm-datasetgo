@@ -1,3 +1,50 @@
+body{
+  margin: 10px;
+  padding: 0px;
+}
+
 img, table {
   border-radius: 5px;
+}
+
+.barchart ,
+.scatterplot
+{
+  font-family: Roboto;
+  width: 950px;
+  height: 490px;
+
+  /* background-color: white; */
+  /* border: 1px solid gainsboro; */
+  /* border-radius: 10px; */
+
+}
+.x-axis-label,
+.y-axis-label
+{
+  font-size: 8pt;
+  font-family: Roboto;
+  fill: white;
+  font-weight: bolder;
+}
+
+#x-axis text,
+.text,
+#y-axis text {
+  font-family: Roboto;
+  font-size: 9pt;
+  fill: white;
+  font-weight: 200;
+  color: white;
+}
+
+.tooltip {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 8px;
+  pointer-events: none;
+  font-family: Roboto;
+  font-size: 10pt;
+  color: white;
 }
