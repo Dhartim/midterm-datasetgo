@@ -104,7 +104,7 @@ function drawBarchart(data) {
     .append('g')
     .attr("transform", translate(400, 0))
     .append("rect")
-    .attr('transform', translate(margin.left - 200, 0))
+    .attr('transform', translate(margin.left - 200, 30))
     .attr("width", width - 2 * margin.right - 2 * (margin.left-100) + 50)
     .attr("height", 10)
     .style("fill", "url(#linear-gradient)");
@@ -113,7 +113,7 @@ function drawBarchart(data) {
     .append("text")
     .attr("class", "legend-text")
     .attr("x", width - 10)
-    .attr("y", 25)
+    .attr("y", 55)
     .text("731,722")
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
@@ -122,7 +122,7 @@ function drawBarchart(data) {
     .append("text")
     .attr("class", "legend-text")
     .attr("x", width - 130)
-    .attr("y", 25)
+    .attr("y", 55)
     .text("2,397")
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
@@ -131,7 +131,7 @@ function drawBarchart(data) {
     .append("text")
     .attr("class", "text")
     .attr("x", width - 90)
-    .attr("y", -10)
+    .attr("y", 20)
     .text("# of Incidents")
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
@@ -153,8 +153,8 @@ function drawBarchart(data) {
     let me = d3.select(this);
     annotations.insert("text")
       .attr("id", "label")
-      .attr("x", x(d.minutes)+45)
-      .attr("y", d3.event.clientY-55)
+      .attr("x", x(d.minutes))
+      .attr("y", y(d.calltype))
       .attr("text-anchor", "middle")
       .text(f(d.minutes) + " minutes")
       .style('fill', 'white');
