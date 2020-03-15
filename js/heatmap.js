@@ -91,7 +91,6 @@ function drawHeatmap(data) {
     let div = d3.select("div#details");
     let bbox = div.node().getBoundingClientRect();
 
-    //TODO: CHECK WHATS WRONG
     div.style("left", d3.event.clientX + "px")
     div.style("top", (d3.event.clientY + 2 * bbox.height) + "px");
   });

@@ -153,8 +153,8 @@ function drawBarchart(data) {
     let me = d3.select(this);
     annotations.insert("text")
       .attr("id", "label")
-      .attr("x", x(d.minutes))
-      .attr("y", y(d.calltype))
+      .attr("x", x(d.minutes)+45)
+      .attr("y", d3.event.clientY-55)
       .attr("text-anchor", "middle")
       .text(f(d.minutes) + " minutes")
       .style('fill', 'white');
