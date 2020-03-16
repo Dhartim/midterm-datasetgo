@@ -105,7 +105,6 @@
   <section class="section">
     <div class="container">
       <!-- Begin page content -->
-      <!-- TODO: Center align content -->
       <div class="content">
         <h1 class="title"> Prototypes</h1>
 
@@ -132,16 +131,73 @@
           chart has no particular ordering.
         </p>
 
-        <h3 id="prototype">Tableau Prototype</h3>
+        <h3 id="prototype">Highest Average Time to Arrive to Scene by Zip Code Stacked Bar Chart</h3>
         <a href="https://www.tableau.com" class="button is-small is-rounded" style="padding: 1em; margin-bottom: 10px;">
           Created with <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" style="height: 20px; padding-left: 5px;-webkit-filter: invert(100%);filter: invert(100%);" />
         </a>
-        <h5>Prototype 1</h5>
         <img src="prototypes/bar2.png" width="960" height="500"/>
-        <h5>Prototype 2</h5>
-        <img src="prototypes/pie2.png" width="960" height="500"/>
+        <h3 id="feedback">Peer Feedback</h3>
+        <style>
+          table.grades tbody tr td:nth-child(1),
+          table.grades tbody tr td:nth-child(2) {
+            text-align: center;
+          }
+        </style>
+
+        <!-- https://bulma.io/documentation/elements/table/ -->
+        <table class="table is-hoverable is-bordered grades">
+          <thead>
+            <tr class="is-selected">
+              <th>
+                <center>Suggestions</center>
+              </th>
+              <th>
+                <center>Improvements</center>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                "I would recommend having neighborhoods on the y axis instead of
+                zipcode though. Zip code tells me nothing."
+                <br/>
+                "Use Zipcode will be hard to interpret..."
+                <br/>
+                "I wonder how it would work with neighborhood labels so people
+                know where which zipcode refers to."
+              </td>
+              <td>
+                I chose zipcode intetionally to have more detailed results
+                versus neighborhoods (ie. there may be multiple zipcodes per
+                neighborhood). To balance this, I added details on demand
+                (tooltips) that maps zipcode to neighborhood.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Video feedback seemed unsure of what I was trying to visualize.
+              </td>
+              <td>
+                I made sure to properly label everything and add lots of
+                descriptions. I rewrote the caption in a more human readable
+                format and added a small flow chart to show how the time stages
+                that the Fire Department uses is set up.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Video feedback was unsure what the length of the bar is.
+              </td>
+              <td>
+                I made sure to add it in the caption as well as add a sentence
+                explaining what the length of the bar is (average minutes for
+                the Fire Department to arrive on scene).
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <h3 id="analysis">Theme Analysis</h3>
-        <h5>Prototype 1</h5>
         <p>
           The bar chart is intended to show the average amount of time it took
           for the Fire Department to arrive at the scene. This is broken down
@@ -153,19 +209,7 @@
           reach the scene.
         </p>
 
-        <h5>Prototype 2</h5>
-        <p>
-          While the stacked bar chart is able to clearly show the slowest "to
-          scene" times, it doesn't show parts of a whole very well. In specific,
-          it is difficult to see how much of the "to scene" time was spent from
-          dispatch to scene or any other time segment. In order to supplement
-          this, a small multiples donut chart encoded similarly was added. The
-          small multiples pie chart aims to show more about how the time is
-          broken up.
-        </p>
-
         <h3 id="analysis">Planned Interactivity</h3>
-        <h5>Prototype 1</h5>
         <p>
           The area chart underneath the stacked bar chart is meant for
           interactivity. While it shows the average time to scene as an area, it
@@ -176,7 +220,22 @@
         </p>
         <img src="prototypes/animation5.gif" />
         <p>From: <a href="http://square.github.io/crossfilter/">http://square.github.io/crossfilter/</a></p>
-        <h5>Prototype 2</h5>
+
+        <h3>Highest Average Time to Arrive to Scene by Zip Code Pie Chart</h3>
+        <img src="prototypes/pie2.png" width="960" height="500"/>
+
+        <h3>Theme Analysis</h3>
+        <p>
+          While the stacked bar chart is able to clearly show the slowest "to
+          scene" times, it doesn't show parts of a whole very well. In specific,
+          it is difficult to see how much of the "to scene" time was spent from
+          dispatch to scene or any other time segment. In order to supplement
+          this, a small multiples donut chart encoded similarly was added. The
+          small multiples pie chart aims to show more about how the time is
+          broken up.
+        </p>
+
+        <h3>Planned Interactivity</h3>
         <p>
           The interactions of the pie chart will be more simplistic. Each slice
           of the donut will brush the given measure. The legend will work
@@ -185,10 +244,10 @@
         </p>
         <img src="prototypes/animation6.gif" width=400px/>
         <p>From class: <a href="https://observablehq.com/@sjengle/interactivity?collection=@sjengle/interactive-scatterplot">https://observablehq.com/@sjengle/interactivity?collection=@sjengle/interactive-scatterplot</a></p>
-        <h3 id="feedback">Peer Feedback</h3>
+        <!-- <h3 id="feedback">Peer Feedback</h3>
         <p>
           The peer feedback you received and how this impacted the final version of your visualizations.
-        </p>
+        </p> -->
       </div>
       <!-- End page content -->
     </div>

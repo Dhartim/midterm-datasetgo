@@ -149,45 +149,129 @@
           see <a href="data.html">here</a>.
         </p>
 
-        <img src="assets/time_types.svg" alt="Time types of call" width="600px;">
+        <div id="flow" style="width: 600px">
+          <img src="assets/time_types.svg" alt="Time types of call" width="600px;">
+        </div>
 
         <p>
           An important thing to note for understanding this visualization is how
           the times are broken up. The diagram shows the general flow the steps
-          involving a call for service. This visualization focusses on the times
+          involving a call for service. This visualization focuses on the times
           from received to on scene. The choice was merely made due to curiosity
           about how long a call for service may take for help to arrive. Not all
           entries include all times. This visualization opts to remove those
           records entirely to be more clear. This visualization only shows calls
-          that resulted in the Fire Department arriving at the scene. View the
-          <a href="data.html">data page</a> for more details about the data.
+          that resulted in the Fire Department arriving at the scene. Hover and
+          wait over a box for more details about the call type. View the
+          <a href="data.html">data page</a> for additonal details about the data.
+        </p>
+
+        <p>
+          Another thing to note that the length of the entire stacked bar
+          represents the average time it took to arrive on scene for a given
+          zipcode in the given time frame. This may raise questions about
+          improperly calculated averages since the sum of partial averages is
+          not the same as the total average. However, since all null records
+          have been dropped, the count for each segment of the bar is the same
+          for each stacked bar. The count is displayed in the tooltip for each
+          bar segment.
         </p>
 
         <h3 id="encoding">Data Encoding</h3>
         <p>
           The data has already been filtered for 2015 and onward. For more
           details about how the data is filtered, see the
-          <a href="data.html">data page</a>.
+          <a href="data.html">data page</a>. Note that these visualizations
+          <b>do not</b> remove outliers. However, we can use this visualization
+          to indentify where the outliers come from.
         </p>
+
         <p>
-          <!-- The stacked bar chart is encoded by average time to  -->
+          The stacked bar chart is encoded by average time to arrive on scene
+          and zipcode. It is sorted by the largest number of minutes to arrive
+          on scene. The area chart is encoded by call date and average minutes
+          to arrive on scene. All null and empty records have been removed.
         </p>
 
         <h3 id="instructions">Instructions</h3>
         <p>
-          Instructions on how to interact with your visualization(s).
+          The colors of the bars are more vibrant to pull it to the foreground.
+          In order to emphasize the bars more, hovering over the bars will lower
+          opacity of the other categories. This also allows easier comparison
+          between different bar lengths of the same category. This can also be
+          done by hovering over the legend labels.
         </p>
+
+        <p>
+          To see details about each bar, hover over the bar for a tooltip. This
+          tooltip includes Type, Average (the current bar segment),
+          Total Average (the entire stacked bar), Total Count (calls represented
+          in the stacked bar), and Zipcode (of the stacked bar).
+        </p>
+
+        <p>
+          Tooltips were also added to the zip codes to show which neighborhood
+          it corresponds to. Note that each zip code maps to multiple
+          neighborhoods. To remain consistent with what the Fire Department
+          uses, the neighborhood mapping was drawn from the how the data was
+          labeled in the dataset. If the zipcode was improperly labeled, the
+          tooltip will also show the same inconsistencies. However, this seemed
+          to be the most accurate way to represent the information.
+        </p>
+
+        <p>
+          To encourage data exploration, brushing on the x axis for the area
+          chart is supported. This will filter the stacked bar chart based on
+          the time range of the brush. Click and drag in the area chart to
+          create a range and click out of the range in the area chart to reset.
+          You can adjust the brushed selection by moving it or by adjusting the
+          size. Since it is a little difficult to see what date range you have
+          selected, the date range is displayed (and is updated) above the
+          stacked bar chart.
+        </p>
+
+        <p>A sample of using the visualization is shown here:</p>
+        <img src="assets/brush3.gif" alt="Chart Interactions" width="960px"/>
 
         <h3 id="analysis">Analysis</h3>
         <p>
-          One or two findings that can be learned from your visualization(s)
-          and how that supports the theme of the group project.
+          From this visualization we can learn several things:
         </p>
 
+        <ul>
+          <li>
+            It seems that 94129 and 94130 show up near the top in many date
+            ranges. This makes sense since it is the Presidio and Treasure
+            Island, respectively. This may mean that the Fire Department might
+            need an additional station in either of those places.
+          </li>
+          <li>
+            The time from response to arrival always seems to take the most
+            time, so any attempt at alleviating traffic for the Fire Department
+            would help immensely.
+          </li>
+          <li>
+            We can also see dramatic spikes in the area chart which implies that
+            there are outliers or events that took substantially longer than
+            expected. Using brushing, we can confirm this is the case and narrow
+            the date range of the incidences. For example, 94111 had a very high
+            entry time in the time frame of December 24th 2016 to December 27th,
+            2016.
+          </li>
+        </ul>
+
         <h3 id="inspiration">Inspirations</h3>
-        <p>
-          Any inspirations for your visualization(s) (including both design and functionality).
-        </p>
+        <div style="display: grid;">
+          <a href="https://github.com/d3/d3-time-format">D3 Date Format</a>
+          <a href="https://github.com/d3/d3-transition">D3 Transition</a>
+          <a href="https://bost.ocks.org/mike/transition/">Transition Examples</a>
+          <a href="https://github.com/john-guerra/d3BrushAndLinkingExample">Brush and Linking Example</a>
+          <a href="https://github.com/d3/d3-brush">D3 Brush</a>
+          <a href="https://bl.ocks.org/bytesbysophie/952a1003dd188410e9c6262b68a65f9a">Animated Bar Chart</a>
+          <a href="https://observablehq.com/@sjengle/interactivity?collection=@sjengle/interactive-scatterplot">Brushing and Tooltips</a>
+          <a href="https://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js">Load SVG from file</a>
+          <em>Thanks to Professor Sophie Engle for all the examples!</em>
+        </div>
       </div>
       <!-- End page content -->
     </div>

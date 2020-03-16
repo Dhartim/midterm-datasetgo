@@ -2,3 +2,12 @@
   /* background-color: slategray; */
   border-radius: 5px;
 }
+
+#flow svg path.flowbox:hover {
+  fill: gray;
+  transition: all 250ms ease 0s;
+}
+
+#flow svg path.flowtext {
+  pointer-events: none;
+}
