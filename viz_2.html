@@ -109,7 +109,10 @@
       <div class="content">
         <h1 class="title"> Visualizations </h1>
 
-        <h3 id="vizualization">D3 Visualization</h3>
+        <h3 id="vizualization">Highest Average Time to Arrive to Scene by Zip Code</h3>
+        <p>
+          <text id="daterange"></text>
+        </p>
         <svg id="timebar" width="960" height="500">
           <!-- actual visualization on top -->
           <g id="plot">
@@ -130,9 +133,44 @@
           </g>
         </svg>
 
+        <p>
+          <b>Caption:</b> This is a stacked bar chart that show the average time
+          it takes for the SF Fire Department to react to calls in different zip
+          codes. This is broken up into stages and colored using the color theme
+          of this site. The time series is linked to the stacked bar chart. The
+          time series charts total average time up to on scene by the time in an
+          area chart. This supports brushing so you can select the data you want
+          the stacked bar chart to show. NOTE that the axes will change based on
+          the selection. Animating the bars resetting is an attempt at
+          emphasizing that the data is different. It is sorted by highest
+          average time to scene per zip code. The data is from 2015 onward. To
+          see more about the
+          <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">data</a>
+          see <a href="data.html">here</a>.
+        </p>
+
+        <img src="assets/time_types.svg" alt="Time types of call" width="600px;">
+
+        <p>
+          An important thing to note for understanding this visualization is how
+          the times are broken up. The diagram shows the general flow the steps
+          involving a call for service. This visualization focusses on the times
+          from received to on scene. The choice was merely made due to curiosity
+          about how long a call for service may take for help to arrive. Not all
+          entries include all times. This visualization opts to remove those
+          records entirely to be more clear. This visualization only shows calls
+          that resulted in the Fire Department arriving at the scene. View the
+          <a href="data.html">data page</a> for more details about the data.
+        </p>
+
         <h3 id="encoding">Data Encoding</h3>
         <p>
-          The data encoding and how to interpret your visualization(s).
+          The data has already been filtered for 2015 and onward. For more
+          details about how the data is filtered, see the
+          <a href="data.html">data page</a>.
+        </p>
+        <p>
+          <!-- The stacked bar chart is encoded by average time to  -->
         </p>
 
         <h3 id="instructions">Instructions</h3>
