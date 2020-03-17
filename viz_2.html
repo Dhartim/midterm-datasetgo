@@ -50,7 +50,7 @@
 
       <div id="main-menu" class="navbar-menu has-text-weight-medium">
         <!-- Left navbar items -->
-        <div class="navbar-start">
+        <div class="navbar-end">
           <a class="navbar-item" href="data.html" title="Data">
             <span class="icon"><i class="fas fa-table"></i></span>
             <span>Data</span>
@@ -64,15 +64,15 @@
             <div class="navbar-dropdown">
               <a class="navbar-item"  href="prot_1.html">
                 <span class="icon"><i class="fas fa-paint-roller"></i></span>
-                <span>Station Area VS. Zipcode</span>
+                <span>Prototypes 1</span>
               </a>
               <a class="navbar-item" href="prot_2.html">
                 <span class="icon"><i class="fas fa-brush"></i></span>
-                <span>Time Stages VS. Zipcode</span>
+                <span>Prototypes 2</span>
               </a>
               <a class="navbar-item" href="prot3.html">
                 <span class="icon"><i class="fas fa-drafting-compass"></i></span>
-                <span>Call type VS. Response time</span>
+                <span>Prototypes 3</span>
               </a>
             </div>
           </div>
@@ -84,15 +84,15 @@
             <div class="navbar-dropdown">
               <a class="navbar-item" href="viz_1.html">
                 <span class="icon"><i class="fas fa-fire-extinguisher"></i></span>
-                <span>Station Area VS. Zipcode</span>
+                <span>Visualization 1</span>
               </a>
               <a class="navbar-item is-active" href="viz_2.html">
                 <span class="icon"><i class="fas fa-first-aid"></i></span>
-                <span>Time Stages VS. Zipcode</span>
+                <span>Visualization 2</span>
               </a>
               <a class="navbar-item" href="viz_3.html">
                 <span class="icon"><i class="fas fa-people-carry"></i></span>
-                <span>Call type VS. Response time</span>
+                <span>Visualization 3</span>
               </a>
             </div>
           </div>
@@ -114,7 +114,6 @@
           <text id="daterange"></text>
         </p>
         <svg id="timebar" width="960" height="500">
-          <!-- actual visualization on top -->
           <g id="plot">
             <g id="bars"></g>
           </g>
@@ -124,7 +123,6 @@
           </g>
         </svg>
         <svg id="timearea" width="960" height="100">
-          <!-- actual visualization on top -->
           <g id="areaplot">
             <g id="area"></g>
           </g>
@@ -138,13 +136,12 @@
           it takes for the SF Fire Department to react to calls in different zip
           codes. This is broken up into stages and colored using the color theme
           of this site. The time series is linked to the stacked bar chart. The
-          time series charts total average time up to on scene by the time in an
-          area chart. This supports brushing so you can select the data you want
-          the stacked bar chart to show. NOTE that the axes will change based on
-          the selection. Animating the bars resetting is an attempt at
-          emphasizing that the data is different. It is sorted by highest
-          average time to scene per zip code. The data is from 2015 onward. To
-          see more about the
+          time series charts total average time up to on scene by call date in an
+          area chart. This supports brushing so you can select the date range
+          you want in the area chart and this will be reflected in the
+          the stacked bar chart. NOTE that the axes will change based on
+          the selection. It is sorted by highest average time to scene per zip
+          code. The data is from 2015 onward. To see more about the
           <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">data</a>
           see <a href="data.html">here</a>.
         </p>
@@ -155,26 +152,29 @@
 
         <p>
           An important thing to note for understanding this visualization is how
-          the times are broken up. The diagram shows the general flow the steps
-          involving a call for service. This visualization focuses on the times
-          from received to on scene. The choice was merely made due to curiosity
-          about how long a call for service may take for help to arrive. Not all
-          entries include all times. This visualization opts to remove those
-          records entirely to be more clear. This visualization only shows calls
-          that resulted in the Fire Department arriving at the scene. Hover and
-          wait over a box for more details about the call type. View the
+          the times are broken up. The diagram shows the general flow of steps
+          that are involved in a call for service. This visualization focuses on
+          the received time up to the on scence time. The choice was made due to
+          curiosity about how long a call for service may take for help to
+          arrive in different areas. Since not all records included all times,
+          this visualization opts to remove those records entirely to be more
+          clear. This visualization only shows calls that resulted in the Fire
+          Department arriving at the scene. Hover and wait over a box for more
+          details about the call type. View the
           <a href="data.html">data page</a> for additonal details about the data.
         </p>
 
         <p>
-          Another thing to note that the length of the entire stacked bar
+          Another thing to note is that the length of the entire stacked bar
           represents the average time it took to arrive on scene for a given
           zipcode in the given time frame. This may raise questions about
           improperly calculated averages since the sum of partial averages is
           not the same as the total average. However, since all null records
           have been dropped, the count for each segment of the bar is the same
           for each stacked bar. The count is displayed in the tooltip for each
-          bar segment.
+          bar segment. Visit
+          <a href="https://math.stackexchange.com/questions/95909/why-is-an-average-of-an-average-usually-incorrect">StackExchange</a>
+          for more details about why averages of averages are usually inaccurate.
         </p>
 
         <h3 id="encoding">Data Encoding</h3>
@@ -183,12 +183,12 @@
           details about how the data is filtered, see the
           <a href="data.html">data page</a>. Note that these visualizations
           <b>do not</b> remove outliers. However, we can use this visualization
-          to indentify where the outliers come from.
+          to identify where the outliers come from.
         </p>
 
         <p>
           The stacked bar chart is encoded by average time to arrive on scene
-          and zipcode. It is sorted by the largest number of minutes to arrive
+          and zipcode. It is sorted by the highest number of minutes to arrive
           on scene. The area chart is encoded by call date and average minutes
           to arrive on scene. All null and empty records have been removed.
         </p>
@@ -203,11 +203,70 @@
         </p>
 
         <p>
-          To see details about each bar, hover over the bar for a tooltip. This
-          tooltip includes Type, Average (the current bar segment),
-          Total Average (the entire stacked bar), Total Count (calls represented
-          in the stacked bar), and Zipcode (of the stacked bar).
+          To see details about each bar, hover over the bar for a tooltip.
+          Further explanation of the tooltips are defined below:
         </p>
+
+        <table class="table is-hoverable is-bordered grades">
+          <thead>
+            <tr>
+              <th>
+                <center>Tooltip Key</center>
+              </th>
+              <th>
+                <center>Explanation</center>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Type
+              </td>
+              <td>
+                The type of the bar segment that is being hovered over. This is
+                the same as the labels in the legend.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Average
+              </td>
+              <td>
+                This is the length of the bar segment in minutes. This would be
+                the average minutes from the end of one stage to the next stage.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Total Average
+              </td>
+              <td>
+                This is the length of the entire stacked bar in minutes. This
+                represents the average minutes it took for the fire department
+                to arrive on scene for the given zipcode.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Total Count
+              </td>
+              <td>
+                This is the total number of calls being represented in the given
+                bar chart.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Zipcode
+              </td>
+              <td>
+                This is the zipcode the bar represents. Hover over for the
+                neighborhood mapping.
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <p>
           Tooltips were also added to the zip codes to show which neighborhood
@@ -231,7 +290,7 @@
         </p>
 
         <p>A sample of using the visualization is shown here:</p>
-        <img src="assets/brush3.gif" alt="Chart Interactions" width="960px"/>
+        <img src="assets/brush3.gif" alt="Chart Interactions" width="800px" style="border: 1px dashed #30465c"/>
 
         <h3 id="analysis">Analysis</h3>
         <p>
@@ -243,12 +302,17 @@
             It seems that 94129 and 94130 show up near the top in many date
             ranges. This makes sense since it is the Presidio and Treasure
             Island, respectively. This may mean that the Fire Department might
-            need an additional station in either of those places.
+            need an additional station in either of those places. Although it
+            should be noted that the visualization does <b>not</b> account for
+            density of calls. Luckily, other
+            <a href="viz_3.html">visualizations</a> on this site show the
+            density.
           </li>
           <li>
             The time from response to arrival always seems to take the most
             time, so any attempt at alleviating traffic for the Fire Department
-            would help immensely.
+            would help immensely. Additional or closer stations may also
+            expedite arrivals.
           </li>
           <li>
             We can also see dramatic spikes in the area chart which implies that

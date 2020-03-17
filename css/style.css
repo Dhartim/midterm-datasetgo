@@ -1,6 +1,17 @@
 body{
-  margin: 10px;
   padding: 0px;
+  margin: 15px;
+}
+
+.navbar {
+  border-radius: 23px;
+  padding: 0px 40px;
+  margin-top: 15px;
+}
+
+.hero {
+  border-radius: 20px;
+  padding: 0px 20px;
 }
 
 img, table {

@@ -211,7 +211,7 @@ let timeBarChart = data => {
         "Type: ": d.key,
         "Average: ": formatDecimal(d[1] - d[0]) + " minutes",
         "Total Average: ": formatDecimal(d.data.Total) + " minutes",
-        "Total Count: ": d.data.Count + " calls",
+        "Total Count: ": d3.format(",")(d.data.Count) + " calls",
         "Zipcode: ": d3.format(".0f")(d.data.Zipcode)
       };
 
