@@ -76,6 +76,8 @@ let drawScatterPlot = function(data){
      .style("stroke", "white")
      .style("stroke-width", 1);
 
+    d3.select(!this).lower();
+
      let div = d3.select("body").append("div");
 
       div.attr("id", "details");
