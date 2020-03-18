@@ -107,7 +107,7 @@ let drawScatterPlot = function(data){
     });
 
     cells.on("mouseover.brush1", function(d) {
-        cells.filter(e => (d.callType !== e.callType)).transition().style("fill", "#1f2d3b");
+        cells.filter(e => (d.callType !== e.callType)).lower().transition().style("fill", "#1f2d3b");
       });
 
     cells.on("mouseout.brush1", function(d) {
