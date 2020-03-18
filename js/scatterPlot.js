@@ -88,7 +88,6 @@ let drawScatterPlot = function(data){
         .append("tr");
 
       rows.append("th").text(key => key)
-          .style("color", "white");
       rows.append("td").text(key => "\xa0" + data[key]);
    });
 
