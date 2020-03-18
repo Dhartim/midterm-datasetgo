@@ -97,8 +97,8 @@ let drawScatterPlot = function(data){
     let div = d3.select("div#details");
     // get height of tooltip
     let bbox = div.node().getBoundingClientRect();
-    div.style("left", d3.event.clientX + "px")
-    div.style("top", d3.event.clientY +(2*bbox.height) + "px");
+    div.style("left", d3.event.pageX + "px")
+    div.style("top",  (d3.event.pageY - bbox.height) + "px");
   });
 
    cells.on("mouseout.hover", function(d) {
