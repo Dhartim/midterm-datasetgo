@@ -198,7 +198,7 @@ function displayIncidents() {
 }
 
 function displayMinutes() {
-  d3.csv("/data/heatmap.csv", function(data) {
+  d3.csv("data/heatmap.csv", function(data) {
     let cells = d3.select(heatmap).select("g#rect").selectAll("rect");
     let color = d3.scaleLinear()
       .range(["#F4D166", "#E4651E", "#9E3A26"])
