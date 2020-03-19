@@ -218,8 +218,8 @@ function displayMinutes() {
         bottom: 30,
         left: 200
       },
-    width = 960 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+      width = 960 - margin.left - margin.right,
+      height = 600 - margin.top - margin.bottom;
 
     let legend = d3.select(heatmap).select("g#legend");
     legend.style("opacity", 0);
