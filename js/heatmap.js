@@ -1,5 +1,4 @@
 function drawHeatmap(data) {
-
   let margin = {
       top: 30,
       right: 30,
@@ -28,7 +27,6 @@ function drawHeatmap(data) {
     .domain(myVars)
     .padding(0.01);
   svg.append("g")
-    //  .attr("transform", translate(0, height))
     .call(d3.axisTop(x))
 
   let y = d3.scaleBand()
@@ -58,11 +56,14 @@ function drawHeatmap(data) {
       return y(d.neighborhoood)
     })
     .attr("height", y.bandwidth())
+    .style("fill", "white")
+    .transition()
+    .duration(1000)
     .style("fill", function(d) {
       return myColor(d.alarms)
     })
 
-  let cells = d3.select(heatmap).select("g#rect").selectAll("rect");
+  let cells = d3.select("#heatmap").select("g#rect").selectAll("rect");
 
   cells.on("mouseover.hover", function(d) {
     d3.select(this)
@@ -101,6 +102,8 @@ function drawHeatmap(data) {
   });
 
   //create legend
+  svg.append("g").attr("id", "legend");
+  let legend = d3.select("#heatmap").select("g#legend");
   let legendColor = d3.scaleLinear()
     .range(["#F4D166", "#9E3A26"])
     .domain([2000, 732000]);
@@ -128,7 +131,7 @@ function drawHeatmap(data) {
     .attr("height", 10)
     .style("fill", "url(#linear-gradient)");
 
-  svg
+  legend
     .append("text")
     .attr("class", "legend-text")
     .attr("x", width - 10)
@@ -137,7 +140,7 @@ function drawHeatmap(data) {
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
 
-  svg
+  legend
     .append("text")
     .attr("class", "legend-text")
     .attr("x", width - 80)
@@ -146,7 +149,7 @@ function drawHeatmap(data) {
     .attr("alignment-baseline", "middle")
     .style('fill', 'white');
 
-  svg
+  legend
     .append("text")
     .attr("class", "legend-text")
     .attr("x", width - 60)
@@ -186,4 +189,70 @@ function drawHeatmap(data) {
     }
     return out;
   }
+}
+
+function displayIncidents() {
+  let elements = d3.select("#heatmap").selectAll("g");
+  elements.remove();
+  d3.csv("data/heatmap.csv").then(drawHeatmap);
+}
+
+function displayMinutes() {
+  d3.csv("/data/heatmap.csv", function(data) {
+    let cells = d3.select(heatmap).select("g#rect").selectAll("rect");
+    let color = d3.scaleLinear()
+      .range(["#F4D166", "#E4651E", "#9E3A26"])
+      .domain([0, 5, 10]);
+
+    cells
+      .style("fill", "white")
+      .transition()
+      .duration(1000)
+      .style("fill", function(d) {
+        return color(d.min);
+      });
+
+    let margin = {
+        top: 30,
+        right: 30,
+        bottom: 30,
+        left: 200
+      },
+    width = 960 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+    let legend = d3.select(heatmap).select("g#legend");
+    legend.style("opacity", 0);
+    let svg = d3.select(heatmap);
+    svg.append("g").attr("id", "legend_min");
+    let legend_min = d3.select("#heatmap").select("g#legend_min");
+
+    legend_min
+      .append("text")
+      .attr("class", "legend-text")
+      .attr("x", width + 215)
+      .attr("y", margin.top + 30)
+      .text("10")
+      .attr("alignment-baseline", "middle")
+      .style('fill', 'white');
+
+    legend_min
+      .append("text")
+      .attr("class", "legend-text")
+      .attr("x", width + 120)
+      .attr("y", margin.top + 30)
+      .text("0")
+      .attr("alignment-baseline", "middle")
+      .style('fill', 'white');
+
+    legend_min
+      .append("text")
+      .attr("class", "legend-text")
+      .attr("x", width + 154)
+      .attr("y", margin.top)
+      .text("Minutes")
+      .attr("alignment-baseline", "middle")
+      .style('fill', 'white');
+
+  });
 }

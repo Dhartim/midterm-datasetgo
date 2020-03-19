@@ -66,7 +66,7 @@
             </a>
 
             <div class="navbar-dropdown">
-              <a class="navbar-item"  href="prot_1.html">
+              <a class="navbar-item" href="prot_1.html">
                 <span class="icon"><i class="fas fa-paint-roller"></i></span>
                 <span>Station Area VS. Zipcode</span>
               </a>
@@ -115,9 +115,17 @@
         <h1 class="title"> Visualizations </h1>
 
         <h2 id="visualizations">Neighborhooods vs. call type group heatmap</h2>
-      </br>
+        </br>
+        <div>
+          <input type="radio" name="displayType" onclick="displayIncidents()" checked />
+          <label>Incidents</label>
+        </div>
+        <div>
+          <input type="radio" name="displayType" onclick="displayMinutes()" />
+          <label>Minutes</label>
+        </div>
         <script type="text/javascript">
-              d3.csv("data/heatmap.csv").then(drawHeatmap);
+          d3.csv("data/heatmap.csv").then(drawHeatmap);
         </script>
         <svg id="heatmap" width="960" height="600"></svg>
         <pre>
@@ -130,19 +138,22 @@
         <h3 id="encoding">Data Encoding</h3>
         <p>
           This data represents points from 2015 onward. The heatmap shows top 10 neighborhood values. All null values were removed.
+          The respose time in minutes was counted using Tableau formula: DATEDIFF('minute',[Received DtTm],[Dispatch DtTm]). It gets the different between Received time and Dispatch time in minutes.s
           The data was downloaded from Tableau prototype implementation and can be found <a href="https://github.com/usf-cs360-spring2020/midterm-datasetgo/tree/gh-pages/data/heatmap.csv">here</a>.
         </p>
 
         <h3 id="instructions">Instructions</h3>
         <p>
-          <p>The heatmap includes two numerical data points that should be known precisely (minutes and number of alarms). The interactivity allows us to show the number of incidents and the response time in minutes for each cell. Interactivity example:</p>
+          <p>The heatmap includes two numerical data points that should be known precisely (minutes and number of incidents). The interactivity allows us to show the number of incidents and the response time in minutes for each cell.
+            Also it allows to see colored heatmap for both number of incidents or response time in minutes. You can switch between two modes using the radio button. Interactivity example:</p>
           <img src="prototypes/animation_heatmap_d3.gif" width="600" height="600" alt="Interactivity">
         </p>
 
         <h3 id="analysis">Analysis</h3>
         <p>
           From the heatmap we can see which neighborhoods get the slowest and the fastest response times and how it correlates with number of incidents in a particular neighborhood.
-          For example, Tenderloin has a lot of "Potentially Life-Threatening incidents" and the response time is fast, though for Castro/Upper Market neighborhood we can see that the amount of "Fire" incidents is very low, while the response time is very high.
+          For example, Tenderloin has a lot of "Potentially Life-Threatening incidents" and the response time is fast, though for Castro/Upper Market neighborhood we can see that the amount of "Fire" incidents is very low, while the response time is
+          very high.
           From such examples we can make a conclusion that there may be a possible correlation between response time and number of incidents. The more incidents happens in a particular area, the faster this area is being processed.
         </p>
 
@@ -156,11 +167,11 @@
           <a href="https://blog.scottlogic.com/2019/03/13/how-to-create-a-continuous-colour-range-legend-using-d3-and-d3fc.html">How to create a continuous colour range legend using D3 and d3fc</a></br>
           <a href="https://observablehq.com/collection/@sjengle/interactive-scatterplot">Interactivity examples</a></br>
         </p>
-        <br/>
+        <br />
         <h2 id="visualizations">Response process time for each call type barchart</h2>
-      </br>
+        </br>
         <script type="text/javascript">
-                  d3.csv("data/barchart-b.csv").then(drawBarchart);
+          d3.csv("data/barchart-b.csv").then(drawBarchart);
         </script>
         <svg id="barchart-b" width="960" height="600"></svg>
         <pre>
@@ -187,13 +198,15 @@
         <p>
           Using the barchart we can learn about response time for each call type in details. We can learn that "Structure fire" takes 10 minutes in average to process, while other fires take no more than 5 minutes. </br>
           If we were to have more data on how the fire department prepares for each call, we could assess whether the fire departments need to facilitate processes for structure fires.
-          It's also important to take into account that call types may be processed twice, meaning that the response time between answering to a structure fire in an "alarm" call type group and answering to a structure fire in the "fire" call type group may be the same call, and it would make sense for the call to be an alarm call first, and a fire call second,
+          It's also important to take into account that call types may be processed twice, meaning that the response time between answering to a structure fire in an "alarm" call type group and answering to a structure fire in the "fire" call type
+          group may be the same call, and it would make sense for the call to be an alarm call first, and a fire call second,
           while having the same initial dispatch time.</br>
           Using this information we may write some recommendations for training for "Structure fire" calls, or look depeer into the data to see if the calls need to be labeled more efficiently.
           However other variables that may be taken into account is whether all departments can respond to the same type of calls, and whether distance or traffic is a factor when dealing with these calls.
           We can also learn that Potentially Life-Threatening calls take between 2 and 3 minutes, while Outside Fire calls take around 1 minute of processing time.</br>
           So, we can write recommendations in building a comparative analysis between Outside Fire response process and Potentially Life-Threatening response process. This analysis may show how to improve the timing for more dangerous calls.
-          Another point to keep in mind is that outside fires do not happen very frequently, and would be interesting to analyze whether they are date specific related (for example 4th of July), which would make the fire departments prepared for outside fires in specific outside areas (for example: barbeque areas in parks).
+          Another point to keep in mind is that outside fires do not happen very frequently, and would be interesting to analyze whether they are date specific related (for example 4th of July), which would make the fire departments prepared for
+          outside fires in specific outside areas (for example: barbeque areas in parks).
         </p>
 
         <h3 id="inspiration">Inspirations</h3>

@@ -68,6 +68,8 @@ function drawBarchart(data) {
     .attr("y", function(d) {
       return y(d.callgroup + ":" + d.calltype) + 5;
     })
+    .transition()
+    .duration(1000)
     .attr("height", y.bandwidth() - 10)
     .attr("x", 1.5)
     .attr("width", function(d) {
@@ -76,8 +78,6 @@ function drawBarchart(data) {
     .style("fill", function(d) {
       return myColor(d.alarms);
     });
-
-
 
   let annotations = svg.append("g").attr("id", "annotation");
 
@@ -105,7 +105,7 @@ function drawBarchart(data) {
     .attr("transform", translate(400, 0))
     .append("rect")
     .attr('transform', translate(margin.left - 200, 30))
-    .attr("width", width - 2 * margin.right - 2 * (margin.left-100) + 50)
+    .attr("width", width - 2 * margin.right - 2 * (margin.left - 100) + 50)
     .attr("height", 10)
     .style("fill", "url(#linear-gradient)");
 
@@ -141,6 +141,8 @@ function drawBarchart(data) {
   bars.on("mouseover", function(d) {
     bars.filter(e => ((d.callgroup + ":" + d.calltype) !== (e.callgroup + ":" + e.calltype)))
       .transition()
+      .duration(500)
+      .style('fill', 'black')
       .attr("fill-opacity", "0.2")
 
     svg.append('line')
@@ -232,14 +234,14 @@ function drawBarchart(data) {
     .style('fill', 'white')
     .text("Potentially Life-Threatening");
 
-// main lables
-svg
-  .append("text")
-  .attr("class", "mainlabel")
-  .attr("transform", translate(55 - margin.left, -15))
-  .style("text-anchor", "middle")
-  .style('fill', 'white')
-  .text("Call Type Group");
+  // main lables
+  svg
+    .append("text")
+    .attr("class", "mainlabel")
+    .attr("transform", translate(55 - margin.left, -15))
+    .style("text-anchor", "middle")
+    .style('fill', 'white')
+    .text("Call Type Group");
 
   svg
     .append("text")
