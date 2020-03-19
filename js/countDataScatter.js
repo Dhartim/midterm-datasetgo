@@ -1,27 +1,27 @@
 function convertRow(row, index)
 {
   let out = {};
-  out.numofalarms = 0;
-  out.priority = 0;
-  out.stationArea = 0;
-  out.zipcode = ' ';
-  out.callType = ' ';
+  out['Number of Alarms'] = 0;
+  out['Priority'] = 0;
+  out['Station Area'] = 0;
+  out['Zipcode'] = ' ';
+  out['Call Type'] = ' ';
   for(let col in row) {
     switch (col) {
       case 'Number of Alarms':
-        out.numofalarms = +(row[col]);
+        out['Number of Alarms'] = +(row[col]);
         break;
       case 'Zipcode of Incident':
-        out.zipcode = row[col];
+        out['Zipcode'] = row[col];
         break;
       case 'Call Type Group':
-        out.callType = row[col];
+        out['Call Type'] = row[col];
         break;
       case 'Priority':
-        out.priority = +(row[col]);
+        out['Priority'] = +(row[col]);
         break;
       case 'Station Area':
-        out.stationArea = +(row[col]);
+        out['Station Area'] = +(row[col]);
     }
   }
   return out;

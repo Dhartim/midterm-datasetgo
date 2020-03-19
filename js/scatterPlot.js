@@ -1,9 +1,9 @@
 let drawScatterPlot = function(data){
   //console.log(data);
-  let countMax = d3.max(data.map(a => a.stationArea));
-  let zipcode = data.map(a => a.zipcode);
-  let priority = data.map(a => a.priority);
-  let callType = data.map(a => a.callType);
+  let countMax = d3.max(data.map(a => a['Station Area']));
+  let zipcode = data.map(a => a['Zipcode']);
+  let priority = data.map(a => a['Priority']);
+  let callType = data.map(a => a['Call Type']);
   //console.log();
   let svg = d3.select("body").select(".scatterplot");
   //plots for svg
@@ -60,11 +60,11 @@ let drawScatterPlot = function(data){
    .data(data)
    .enter().append('circle')
    .attr('class', 'bubble')
-   .attr('cx', function(d){return zipcodeX(d.zipcode);})
-   .attr('cy', function(d){ return stationAreaY(d.stationArea); })
-   .attr('r', d => d.priority*3)
+   .attr('cx', function(d){return zipcodeX(d['Zipcode']);})
+   .attr('cy', function(d){ return stationAreaY(d['Station Area']); })
+   .attr('r', d => d['Priority']*3)
    .attr("transform", translate(2*margin.left + margin.right, margin.top - margin.right-10))
-   .style('fill', d => color(d.callType));
+   .style('fill', d => color(d['Call Type']));
 
    //interactivity in chart
    let cells = d3.select(".scatterplot").select("g#all-circles").selectAll("circle");
@@ -75,11 +75,8 @@ let drawScatterPlot = function(data){
      .raise()
      .style("stroke", "white")
      .style("stroke-width", 1);
-
-    d3.select(!this).lower();
-
+    //d3.select(!this).lower();
      let div = d3.select("body").append("div");
-
       div.attr("id", "details");
       div.attr("class", "tooltip");
 
@@ -107,11 +104,11 @@ let drawScatterPlot = function(data){
     });
 
     cells.on("mouseover.brush1", function(d) {
-        cells.filter(e => (d.callType !== e.callType)).lower().transition().style("fill", "#1f2d3b");
+        cells.filter(e => (d['Call Type'] !== e['Call Type'])).lower().transition().style("fill", "#1f2d3b");
       });
 
     cells.on("mouseout.brush1", function(d) {
-        cells.transition().style("fill", d => color(d.callType));
+        cells.transition().style("fill", d => color(d['Call Type']));
     });
 
     //legends

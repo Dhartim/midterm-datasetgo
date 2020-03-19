@@ -121,6 +121,8 @@ let drawBarChart = function(data)
       cells.transition().style("fill", d => color(d.key));
   });
 
+
+
   //legends
     svg.append("text")
       .attr("class", "text")
